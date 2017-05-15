@@ -33,7 +33,7 @@ class Api {
   }
 
   // Return the latest basic info on all plantes, match with endpoints
-  getPlantCards = (token) => {
+  getPlantCardList = (token) => {
     return superagent
     .get(`${API_HOST}/plants`)
   }
@@ -71,7 +71,18 @@ class Api {
       return superagent
       .post(`${API_HOST}/plants`)
       .send({
-        // Check the sql table
+        // Match with the sql table
+        nickname: plant.nickname,
+        name: plant.name,
+        description: plant.description,
+        maxtemp: plant.maxtemp,
+        mintemp: plant.mintemp,
+        maxph: plant.maxph,
+        minph: plant.minph,
+        maxhum: plant.maxhum,
+        minhum: plant.minhum,
+        maxlux: plant.maxlux,
+        minlux: plant.minlux
       })
       .set('Authorization', `token ${localStorage.token}`)
       .set('Accept', 'application/json')
