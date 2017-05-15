@@ -1,0 +1,82 @@
+import superagent from 'superagent'
+import { API_HOST } from './config'
+
+class Api {
+
+  // For user login
+  requestLogIn = (email, password) => {
+    return superagent
+    .post(`${API_HOST}/auth/sessions`)
+    .send({ email, password })
+    .set('Accept', 'application/json')
+  }
+
+  // For user signup
+  requestSignUp = (signUpObj) => {
+    return superagent
+    .post(`${API_HOST}/auth/users`)
+    .send({
+      email: signUpObj.email,
+      phone: signUpObj.phone,
+      password: signUpObj.password
+    })
+    .set('Accept', 'application/json')
+  }
+
+  // For user logout
+  requestLogOut = (token) => {
+    return superagent
+    .delete(`${API_HOST}/auth/sessions`)
+    .send({token})
+    .set('Authorization', `token ${token}`)
+    .set('Accept', 'application/json')
+  }
+
+  // Return the latest basic info on all plantes, match with endpoints
+  getPlantCards = (token) => {
+    return superagent
+    .get(`${API_HOST}/plants`)
+  }
+
+  // Return single plant card with 4 charts on the page, waiting for endpoints
+  // id here is plant ID, not userId, figure out a way to access plantId
+  getSinglePlantCard = (id) => {
+    return superagent
+    .get(`${API_HOST}/plants/${id}`)
+    .set('Authorization', `token ${localStorage.token}`)
+  }
+
+  // For loggedin user to delete plant card
+  deletePlantCard = (id) => {
+    return superagent
+    .delete(`${API_HOST}/plants/${id}`)
+  }
+
+  // Get the loggedin user profile
+  getMe = (token) => {
+    return superagent
+    .get(`${API_HOST}/auth/me`)
+    .send({token})
+    .set('Authorization', `token ${token}`)
+    .set('Accept', 'application/json')
+    .then(profile => {
+      return JSON.parse(profile.text);
+    })
+  }
+
+  // For loggedin user to post a new plant card
+  postPlantCard = (plant) => {
+    return this.getMe(localStorage.token)
+    .then(profile) => {
+      return superagent
+      .post(`${API_HOST}/plants`)
+      .send({
+        // Check the sql table
+      })
+      .set('Authorization', `token ${localStorage.token}`)
+      .set('Accept', 'application/json')
+    }
+  }
+}
+
+export default new Api();
