@@ -12,9 +12,9 @@ export default class PlantDetail extends Component {
     return(
       <div className='plant-card'>
         <div>
-          <h2>{ nickname }</h2>
-          <p>{ name }</p>
-          <p>{ description }</p>
+          <h2>{ this.props.nickname }</h2>
+          <p>{ this.props.name }</p>
+          <p>{ this.props.description }</p>
         </div>
 
       </div>

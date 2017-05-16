@@ -24,7 +24,7 @@ export default class Home extends Component {
     }
 
     _fetchPlantCardList = () => {
-        api.getPlantCardsList()
+        api.getPlantCards()
             .then(res => {
                 this.setState({ plantcards: res.body })
             })
