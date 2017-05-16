@@ -15,10 +15,10 @@ export default class PlantCard extends Component {
     return api.deletePlantCard(this.props.id);
   }
   render() {
-    const isLoggedIn = auth.isLoggedIn();
+    // const isLoggedIn = auth.isLoggedIn();
     let { nickname, name, description, id } = this.props
 
-    if(isLoggedIn){
+
       return(
         <div>
           <Link to={`/plants/${id}`}>
@@ -40,6 +40,6 @@ export default class PlantCard extends Component {
           </div>
         </div>
       );
-    } 
+
   }
 }

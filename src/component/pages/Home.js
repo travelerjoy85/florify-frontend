@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import api from '../../api';
+//import api from '../../api';
 import PlantCards from '../pages/PlantCards';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
