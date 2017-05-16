@@ -13,16 +13,16 @@ export default class SignUp extends Component {
 
     _handleSignup = () => {
         // deep destructuring equivalent to (let email = this.refs.email.value;)
-        let { email: {value: email}, password: {value: password} } = this.refs;
+        let { email: {value: email}, password: {value: password}, phone: {value: phone} } = this.refs;
         if (email && password) {
             auth.signup(email, password)
                 .then(res => this.props.router.push('/login'))
                 .catch(console.error)
         }
-        else {
-            this.setState({ error: "Please enter an email and password"})
-        }
-    };
+        // else {
+        //     this.setState({ error: "Please enter an email and password"})
+        // }
+    }
 
     _handleTyping = (e) => {
         if (this.state && this.state.error) {
@@ -31,7 +31,7 @@ export default class SignUp extends Component {
         if (e.keyCode===ENTER) {
             this._handleSignup()
         }
-    };
+    }
 
     render() {
         return (
