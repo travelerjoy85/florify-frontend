@@ -53,6 +53,7 @@ export default class PlantCards extends Component {
                     <PlantCard
                         key={plant.id}
                         id={plant.id}
+                        nickname={plant.nickname}
                         name={plant.name}
                         imageurl={plant.imageurl}
                         maxtemp={plant.maxtemp}
