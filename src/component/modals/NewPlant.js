@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import './CreatePlantCardList.css';
+import './NewPlant.css';
 import api from '../../api';
 
 const ENTER = 13;
 
-export default class CreatePlantCardList extends Component {
+export default class NewPlant extends Component {
   constructor(props) {
     super(props);
     this.state = {};

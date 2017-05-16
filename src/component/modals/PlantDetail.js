@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import './SinglePlantCard.css';
+import './PlantDetail.css';
 
-export default class SinglePlantCard extends Component {
+export default class PlantDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
   }
 
   render() { // render chart
-    let {} = this.props
     return(
       <div className='plant-card'>
         <div>

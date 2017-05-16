@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import api from '../../api';
-import PlantCards from '../elements/PlantCards';
-import AddButton from '../elements/AddButton';
-import auth from '../../auth';
-import CreatePlantCardList from '../modals/CreatePlantCardList';
+import PlantCard from '../elements/PlantCard';
+import PlantDetail from '../modals/PlantDetail';
 // import auth from '../../auth';
-import './PlantCard.css';
+import './PlantCards.css';
 import Util from '../../util';
 //const changeTitle = require('../App').changeTitle;
 
-export default class PlantCard extends Component {
+export default class PlantCards extends Component {
     constructor() {
         super();
         this.state = {
@@ -46,7 +44,7 @@ export default class PlantCard extends Component {
         return (
             <div className="plantInfo">
                 { plants.map(plant =>
-                    <PlantCards
+                    <PlantCard
                         key={plant.id}
                         id={plant.id}
                         name={plant.name}

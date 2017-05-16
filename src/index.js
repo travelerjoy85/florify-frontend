@@ -5,14 +5,14 @@ import App from './component/App';
 import './index.css';
 import Home from './component/pages/Home';
 import SignUp from './component/pages/SignUp';
-import PlantCard from './component/pages/PlantCard';
+import PlantCards from './component/pages/PlantCards';
 import Login from './component/pages/Login';
 
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="/plants/:id" component={PlantCard} />
+      <Route path="/plants/:id" component={PlantCards} />
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
     </Route>
