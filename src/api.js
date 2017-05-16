@@ -67,7 +67,7 @@ class Api {
   // For loggedin user to post a new plant card
   postPlantCard = (plant) => {
     return this.getMe(localStorage.token)
-    .then(profile) => {
+    .then((profile) => {
       return superagent
       .post(`${API_HOST}/plants`)
       .send({
@@ -86,7 +86,7 @@ class Api {
       })
       .set('Authorization', `token ${localStorage.token}`)
       .set('Accept', 'application/json')
-    }
+    })
   }
 }
 
