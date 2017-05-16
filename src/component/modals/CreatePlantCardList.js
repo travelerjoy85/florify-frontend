@@ -22,7 +22,7 @@ export default class CreatePlantCardList extends Component {
       maxhum: {value: maxhum},
       minhum: {value: minhum},
       maxlux: {value: maxlux},
-      minLux: {value: minLux}
+      minlux: {value: minlux}
     } = this.refs;
     if(nickname){
       api.postPlantCard({

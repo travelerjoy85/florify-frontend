@@ -1,15 +1,31 @@
 import React, {Component} from 'react';
 import api from '../../api';
+import PlantCards from '../elements/PlantCards';
+import AddButton from '../elements/AddButton';
 import auth from '../../auth';
+import CreatePlantCardList from '../modals/CreatePlantCardList';
+// import auth from '../../auth';
 import './PlantCard.css';
+import Util from '../../util';
+//const changeTitle = require('../App').changeTitle;
 
 export default class PlantCard extends Component {
     constructor() {
         super();
         this.state = {
-            plants:[],
-            bookmarks: [],
-            updatedAt: ""
+            nickname: "",
+            name: "",
+            description: "",
+            maxtemp: "",
+            mintemp: "",
+            maxph: "",
+            minph: "",
+            maxhum: "",
+            minhum: "",
+            maxLux: "",
+            minlux: "",
+            updatedAt: "",
+            isCreatePlantCardClicked: false
         };
     }
 
@@ -30,7 +46,7 @@ export default class PlantCard extends Component {
         return (
             <div className="plantInfo">
                 { plants.map(plant =>
-                    <PlantInfo
+                    <PlantCards
                         key={plant.id}
                         id={plant.id}
                         name={plant.name}
