@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import auth from '../../auth'
-import './Login.css';
+import './login.css';
 
 const ENTER = 13;
 

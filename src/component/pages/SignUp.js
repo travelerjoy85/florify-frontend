@@ -15,8 +15,8 @@ export default class SignUp extends Component {
         // deep destructuring equivalent to (let email = this.refs.email.value;)
         let { email: {value: email}, password: {value: password} } = this.refs;
         if (email && password) {
-            auth.login(email, password)
-                .then(res => this.props.router.push('/'))
+            auth.signup(email, password)
+                .then(res => this.props.router.push('/login'))
                 .catch(console.error)
         }
         else {
@@ -35,16 +35,20 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <div className="signup">
-                <h3>{this.state.error}</h3>
-                <input type="text" ref="email"
-                       onKeyUp={this._handleTyping}
-                />
-                <input type="password" ref="password"
-                       onKeyUp={this._handleTyping}
-                />
-                <button onClick={this._handleSignup}>signup</button>
+          <div className="sign__up">
+            <div className="sign__up-content">
+              <h1>Sign Up</h1>
+              <h5>Email</h5>
+              <input type="text" ref="email" onKeyUp={this._handleTyping}/><br/>
+              <h5>Password</h5>
+              <input type="password" ref="password" onKeyUp={this._handleTyping}/><br/>
+              <h5>Phone</h5>
+              <input type="text" ref="phone" onKeyUp={this._handleTyping}/><br/>
+              <div className="sign__up-button">
+                <button onClick={this._handleSignup}>Sign Up</button>
+              </div>
             </div>
+          </div>
         );
     }
 

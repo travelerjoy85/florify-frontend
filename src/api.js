@@ -33,14 +33,17 @@ class Api {
   }
 
   // Return the latest basic info on all plantes, match with endpoints
-  getPlantCardList = (token) => {
+  getPlantCards = (token) => {
     return superagent
     .get(`${API_HOST}/plants`)
+    .send({token})
+    .set('Authorization', `token ${token}`)
+    .set('Accept', 'application/json')
   }
 
   // Return single plant card with 4 charts on the page, waiting for endpoints
   // id here is plant ID, not userId, figure out a way to access plantId
-  getSinglePlantCard = (id) => {
+  getPlantDetail = (id) => {
     return superagent
     .get(`${API_HOST}/plants/${id}`)
     .set('Authorization', `token ${localStorage.token}`)
