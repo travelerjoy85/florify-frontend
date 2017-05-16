@@ -18,7 +18,7 @@ export default class PlantCards extends Component {
     const isLoggedIn = auth.isLoggedIn();
     let { nickname, name, description, id } = this.props
 
-    if(isLoggedIn)
+    if(isLoggedIn){
       return(
         <div>
           <Link to={`/plants/${id}`}>
@@ -40,5 +40,22 @@ export default class PlantCards extends Component {
           </div>
         </div>
       );
+    } else {
+      return(
+        <Link to={`/plants/${id}`}>
+          <div className="plant-card">
+            <div className="card-container">
+              <div className="card-item">
+                <h2>{ nickname }</h2>
+                <p>{ name }</p>
+                <p>{ description }</p>
+              </div>
+              <div className="card-item2">
+              </div>
+            </div>
+          </div>
+        </Link>
+      );
+    }
   }
 }
