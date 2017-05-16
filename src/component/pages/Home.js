@@ -5,8 +5,6 @@ import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
 import NewPlant from '../modals/NewPlant';
-// TODO: import PlantCard
-//import PlantCard from '../elements/Card';
 
 
 export default class Home extends Component {
