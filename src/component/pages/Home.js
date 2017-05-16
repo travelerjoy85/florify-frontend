@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import api from '../../api';
-import PlantCards from '../elements/PlantCards';
+import PlantCard from '../elements/PlantCard';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
-import CreatePlantCardList from '../modals/CreatePlantCardList';
+import NewPlant from '../modals/NewPlant';
 // TODO: import PlantCard
 //import PlantCard from '../elements/Card';
 
@@ -40,7 +40,7 @@ export default class Home extends Component {
         return (
             <div className="home">
                 { plantcards.map(plantcard =>
-                    <PlantCards
+                    <PlantCard
                         key={plantcard.id}
                         id={plantcard.id}
                         nickname={plantcard.nickname}
@@ -57,7 +57,7 @@ export default class Home extends Component {
                 )}
 
                 {auth.isLoggedIn() ? <AddButton _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
-                {this.state.isCreatePlantCardClicked ? <CreatePlantCardList _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCardList={this._fetchPlantCardList} /> : null }
+                {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCardList={this._fetchPlantCardList} /> : null }
 
             </div>
         );

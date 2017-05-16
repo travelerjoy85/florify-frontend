@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 // import { Redirect } from 'react-router';
-import './PlantCards.css';
+import './PlantCard.css';
 import auth from '../../auth';
 import api from '../../api'
 
-export default class PlantCards extends Component {
+export default class PlantCard extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -40,22 +40,6 @@ export default class PlantCards extends Component {
           </div>
         </div>
       );
-    } else {
-      return(
-        <Link to={`/plants/${id}`}>
-          <div className="plant-card">
-            <div className="card-container">
-              <div className="card-item">
-                <h2>{ nickname }</h2>
-                <p>{ name }</p>
-                <p>{ description }</p>
-              </div>
-              <div className="card-item2">
-              </div>
-            </div>
-          </div>
-        </Link>
-      );
-    }
+    } 
   }
 }
