@@ -26,7 +26,8 @@ export default class Home extends Component {
     _fetchPlantCardList = () => {
         api.getPlantCards()
             .then(res => {
-                this.setState({ plantcards: res.body })
+              console.log(res.body.plants)
+                this.setState({ plantcards: res.body.plants })
             })
             .catch(console.error)
     };
@@ -37,10 +38,13 @@ export default class Home extends Component {
 
     render() {
         let { plantcards } = this.state;
+        console.log("::", plantcards);
         return (
             <div className="home">
+
                 { plantcards.map(plantcard =>
-                    <PlantCard
+                      <div className="home_plantcards-thirds">
+                      <PlantCard
                         key={plantcard.id}
                         id={plantcard.id}
                         nickname={plantcard.nickname}
@@ -54,6 +58,7 @@ export default class Home extends Component {
                         minlux={plantcard.minlux}
                         updatedAt={plantcard.updatedAt}
                     />
+                    </div>
                 )}
 
                 {auth.isLoggedIn() ? <AddButton _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
