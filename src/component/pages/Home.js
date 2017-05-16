@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import api from '../../api';
-import PlantCard from '../elements/PlantCard';
+import PlantCards from '../pages/PlantCards';
 import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
@@ -19,51 +19,26 @@ export default class Home extends Component {
         };
     }
 
-    componentDidMount() {
-        this._fetchPlantCardList();
-    }
+    // _fetchPlantCardList = () => {
+    //   console.log("Hello!!!")
+    //     api.getPlantCards()
+    //         .then(res => {
+    //             this.setState({ plantcards: res.body.plants })
+    //         })
+    //         .catch(console.error)
+    // };
 
-    _fetchPlantCardList = () => {
-        api.getPlantCards()
-            .then(res => {
-              console.log(res.body.plants)
-                this.setState({ plantcards: res.body.plants })
-            })
-            .catch(console.error)
-    };
-
-    _handlePlantCardCreate = () => {
-      this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
-    }
+    // _handlePlantCardCreate = () => {
+    //   this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
+    // }
 
     render() {
         let { plantcards } = this.state;
-        console.log("::", plantcards);
         return (
             <div className="home">
-
-                { plantcards.map(plantcard =>
-                      <div className="home_plantcards-thirds">
-                      <PlantCard
-                        key={plantcard.id}
-                        id={plantcard.id}
-                        nickname={plantcard.nickname}
-                        name={plantcard.name}
-                        description={plantcard.description}
-                        maxtemp={plantcard.maxtemp}
-                        mintemp={plantcard.mintemp}
-                        maxph={plantcard.maxph}
-                        minph={plantcard.minph}
-                        maxlux={plantcard.maxlux}
-                        minlux={plantcard.minlux}
-                        updatedAt={plantcard.updatedAt}
-                    />
-                    </div>
-                )}
-
+                <PlantCards/>
                 {auth.isLoggedIn() ? <AddButton _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
                 {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCardList={this._fetchPlantCardList} /> : null }
-
             </div>
         );
     }
