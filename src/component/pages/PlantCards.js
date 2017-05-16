@@ -11,6 +11,7 @@ export default class PlantCards extends Component {
     constructor() {
         super();
         this.state = {
+            plants: [],
             nickname: "",
             name: "",
             description: "",
@@ -32,11 +33,16 @@ export default class PlantCards extends Component {
     }
 
     fetchPlantData = () => {
-        api.getSinglePlantCard()
+        api.getPlantCards()
         .then(res => {
-            this.setState({ plants: res.body })
+            console.log("PlantCards->fetchPlantData", res.body.plants);
+            this.setState({ plants: res.body.plants })
         })
         .catch(console.error)
+    }
+
+    _handlePlantCardCreate = () => {
+      this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
     }
 
     render() {
