@@ -5,7 +5,6 @@ import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
 import NewPlant from '../modals/NewPlant';
-import PlantCard from '../elements/PlantCard';
 // TODO: import PlantCard
 //import PlantCard from '../elements/Card';
 
