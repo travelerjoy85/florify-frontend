@@ -5,20 +5,19 @@ import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
 import NewPlant from '../modals/NewPlant';
-import PlantCard from '../elements/PlantCard';
-// TODO: import PlantCard
-//import PlantCard from '../elements/Card';
+import PlantDetail from '../modals/PlantDetail'
+
 
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            plantcards: [],
             isCreatePlantCardClicked: false,
             isDeleteButtonClicked: false
         };
     }
+
 
     _handlePlantCardCreate = () => {
       this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
@@ -28,6 +27,7 @@ export default class Home extends Component {
         let { plantcards } = this.state;
         return (
             <div className="home">
+                <PlantDetail />
                 <PlantCards/>
                 {auth.isLoggedIn() ? <AddButton _handleButton={this._handlePlantCardCreate}/> : null}
                 {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} plantId={this.plantId}/> : null }
