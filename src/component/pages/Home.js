@@ -1,46 +1,60 @@
 import React, {Component} from 'react';
 import api from '../../api';
-import PlantCards from '../pages/PlantCards';
-//import AddButton from '../elements/AddButton';
-import AddButton2 from '../elements/AddButton2';
+import PlantCard from '../elements/PlantCard';
+import AddPlantCard from '../elements/AddPlantCard';
 import auth from '../../auth';
 import './Home.css';
-import NewPlant from '../modals/NewPlant';
-import PlantDetail from '../pages/PlantDetail'
+import CreatePlant from '../modals/CreatePlant';
 
 
+
+// This component is the INDEXROUTE "/"
+// it is responsible for fetching the plantsdata and map it to a
+// bunch of <PlantCard />'s.
+//
+// This component is also responsible for displaying the AddPlantCard
+// button along with the PlantCards. Upon clicking the <AddPlantCard />
+// this component will set it's own state to allow the <CreatePlant />
+// modal to render on the page. It will also pass a function to CreatePlant
+// which allows it to close itself upon submitting.
 
 export default class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isCreatePlantCardClicked: false,
-            isDeleteButtonClicked: false
-        };
-    }
+  
+  componentDidMount() {
+      this._fetchPlantCard()
+  }
+  
+  _fetchPlantCard = () => {
+      api.getPlantCards()
+      .then(res => {
+          console.log(res.body)
+          this.setState({ plants: res.body })
+      })
+      .catch(console.error)
+  }
 
-    _fetchPlantCard = () => {
-        api.getPlantCards()
-        .then(res => {
-            this.setState({ plants: res.body })
-        })
-        .catch(console.error)
-    }
-
-    _handlePlantCardCreate = () => {
-      this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
-    }
-
-    render() {
-        console.log(auth.isLoggedIn(), "check if loggedin!!!!")
-        let { plantcards } = this.state;
-        return (
-            <div className="home">
-                <PlantCards/>
-                {auth.isLoggedIn() ? <AddButton2 _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
-                {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} userId={this.userId}/> : null }
-            </div>
-        );
-    }
+  render() {
+      let { plants } = this.state
+      return (
+          <div className="plantInfo">
+            { plants && plants.map(plant =>
+              <PlantCard
+                key={plant.id}
+                id={plant.id}
+                nickname={plant.nickname}
+                name={plant.name}
+                imageurl={plant.imageurl}
+                maxtemp={plant.maxtemp}
+                mintemp={plant.mintemp}
+                maxph={plant.maxph}
+                minph={plant.minph}
+                maxlux={plant.maxlux}
+                minlux={plant.minlux}
+                updatedAt={plant.updatedAt}
+              />
+            )}
+          </div>
+      );
+  }
 
 }

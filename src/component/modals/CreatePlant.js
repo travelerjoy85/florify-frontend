@@ -1,10 +1,23 @@
-import React, {Component} from 'react';
-import './NewPlant.css';
-import api from '../../api';
+import React, { Component } from 'react';
+import './CreatePlant.css'
+import api from '../../api'
 
-const ENTER = 13;
+const ENTER = 13
 
-export default class NewPlant extends Component {
+// This component is rendered conditionally by Home.js
+// There should be a piece of state on Home.js which controls wether this
+// component is rendered.
+//
+// This component should allow the user to fill out the necessary info to create
+// a new plant.
+//
+// Upon hitting submit this component will :
+// 1) Make a api call to the backend to save the new plant
+// 2) THEN it will call a function (which was passed to it as a prop by Home.js)
+//     which changes that piece of state on Home.js which conditionally renders
+//     this modal to now hide it...
+
+export default class CreatePlant extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -38,12 +51,13 @@ export default class NewPlant extends Component {
         maxph: maxph,
         minph: minph,
         maxhum: maxhum,
-        minhum: minhum,
-        maxlux: maxlux,
-        minlux: minlux,
-      }).then(() => {
-        this.props._handlePlantCardCreate();
-        this.props._fetchPlantCard();
+         minhum: minhum,
+         maxlux: maxlux,
+         minlux: minlux,
+         plantId: this.props.plantId
+       }).then(() => {
+         this.props._handlePlantCardCreate();
+         this.props._fetchPlantCard();
       }).catch(console.error)
     }
   }
@@ -84,11 +98,12 @@ export default class NewPlant extends Component {
           <input type="text" ref="maxlux" onKeyUp={this._handleTyping}/><br/>
           <h5>Minlux</h5>
           <input type="text" ref="minlux" onKeyUp={this._handleTyping}/><br/>
-        <div className="create__card-button">
-          <button onClick={this._submitCard}>Submit Plant</button>
-        </div>
+          <div className="create__card-button">
+            <button onClick={this._submitCard}>Submit Plant</button>
+          </div>
         </div>
       </div>
     );
   }
+
 }
