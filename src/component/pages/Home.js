@@ -6,7 +6,7 @@ import AddButton2 from '../elements/AddButton2';
 import auth from '../../auth';
 import './Home.css';
 import NewPlant from '../modals/NewPlant';
-import PlantDetail from '../modals/PlantDetail'
+import PlantDetail from '../pages/PlantDetail'
 
 
 
@@ -36,7 +36,6 @@ export default class Home extends Component {
         let { plantcards } = this.state;
         return (
             <div className="home">
-                <PlantDetail/>
                 <PlantCards/>
                 {auth.isLoggedIn() ? <AddButton2 _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
                 {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} userId={this.userId}/> : null }
