@@ -24,10 +24,10 @@ class App extends Component {
     this._handleLogout()
   }
 
-  _handleLogout = () => {
-    auth.logout()
-    // .then(res => this.props..push('/'));
-  }
+  // _handleLogout = () => {
+  //   auth.logout()
+  //   // .then(res => this.props..push('/'));
+  // }
 
   // componentDidUpdate(){
   //   let newTitle = util.getTitle()
