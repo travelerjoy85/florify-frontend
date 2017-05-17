@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 // import { Redirect } from 'react-router';
 import './PlantCard.css';
-import auth from '../../auth';
-import api from '../../api'
+//import auth from '../../auth';
+import api from '../../api';
+import {browserHistory} from 'react-router';
 
 export default class PlantCard extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ export default class PlantCard extends Component {
   }
 
   _handleDelete = () => {
-    api.deletePlantCard(this.props.id);
+    api.deletePlantCard(this.props.id)
+    .then(res => browserHistory.push('/'))
   }
 
   render() {

@@ -25,3 +25,5 @@ export default class Logout extends Component{
 
 
 }
+
+// TODO: request delete session 2 times when we log out, fix this.
