@@ -26,9 +26,9 @@ module.exports = {
 
   logout(){
     return api.requestLogOut(localStorage.token)
-    .then(res => {
+    .then(res =>
       delete localStorage.token
-    })
+    )
     .catch(console.error);
   },
 

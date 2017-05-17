@@ -22,9 +22,9 @@ class Menu extends Component {
       .then((res) => {
         this.setState({
           profile: res
-        })})
+        })
+      })
     }
-
   }
 
   render() {
@@ -55,7 +55,7 @@ class Menu extends Component {
 
           {isLoggedIn ?
 
-            <Link to="/" className="menu__item" onClick={closeMenuAndLogout}>
+            <Link to="/logout" className="menu__item" onClick={closeMenuAndLogout}>
               Logout
             </Link>
           : null}
