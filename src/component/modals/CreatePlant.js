@@ -23,9 +23,9 @@ export default class CreatePlant extends Component {
     this.state = {};
   }
 
-  plantId = () => {
-    return this.props.params.id;
-  }
+   plantId = () => {
+     return this.props.params.id;
+   }
 
   _submitCard = () => {
     let{
@@ -62,14 +62,16 @@ export default class CreatePlant extends Component {
     }
   }
 
-  _handleTyping = (e) => {
-    if(this.state && this.state.error){
-      this.setState({error: null})
-    }
-    if(e.keyCode === ENTER){
-      this._submitCard()
-    }
-  }
+
+   _handleTyping = (e) => {
+     if(this.state && this.state.error){
+       this.setState({error: null})
+     }
+     if(e.keyCode === ENTER){
+       this._submitCard()
+     }
+   }
+
 
   render(){
     return(

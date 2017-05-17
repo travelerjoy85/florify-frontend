@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
 import AddPlantCard from '../elements/AddPlantCard';
@@ -8,6 +9,7 @@ import CreatePlant from '../modals/CreatePlant';
 
 
 
+<<<<<<< HEAD
 // This component is the INDEXROUTE "/"
 // it is responsible for fetching the plantsdata and map it to a
 // bunch of <PlantCard />'s.
@@ -21,17 +23,18 @@ import CreatePlant from '../modals/CreatePlant';
 export default class Home extends Component {
   
   componentDidMount() {
-      this._fetchPlantCard()
+      this._fetchPlants()
   }
   
-  _fetchPlantCard = () => {
-      api.getPlantCards()
+  _fetchPlants = () => {
+      api.getPlants()
       .then(res => {
           console.log(res.body)
           this.setState({ plants: res.body })
       })
       .catch(console.error)
   }
+
 
   render() {
       let { plants } = this.state
@@ -57,4 +60,4 @@ export default class Home extends Component {
       );
   }
 
-}
+ }
