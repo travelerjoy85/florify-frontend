@@ -5,11 +5,13 @@ import AddButton from '../elements/AddButton';
 import auth from '../../auth';
 import './Home.css';
 import NewPlant from '../modals/NewPlant';
+import PlantCard from '../elements/PlantCard';
+
 
 
 export default class Home extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             plantcards: [],
             isCreatePlantCardClicked: false,
@@ -17,26 +19,17 @@ export default class Home extends Component {
         };
     }
 
-    // _fetchPlantCardList = () => {
-    //   console.log("Hello!!!")
-    //     api.getPlantCards()
-    //         .then(res => {
-    //             this.setState({ plantcards: res.body.plants })
-    //         })
-    //         .catch(console.error)
-    // };
-
-    // _handlePlantCardCreate = () => {
-    //   this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
-    // }
+    _handlePlantCardCreate = () => {
+      this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
+    }
 
     render() {
         let { plantcards } = this.state;
         return (
             <div className="home">
                 <PlantCards/>
-                {auth.isLoggedIn() ? <AddButton _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
-                {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCardList={this._fetchPlantCardList} /> : null }
+                {auth.isLoggedIn() ? <AddButton _handleButton={this._handlePlantCardCreate}/> : null}
+                {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} plantId={this.plantId}/> : null }
             </div>
         );
     }

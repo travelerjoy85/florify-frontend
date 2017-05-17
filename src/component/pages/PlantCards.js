@@ -24,25 +24,19 @@ export default class PlantCards extends Component {
             maxLux: "",
             minlux: "",
             updatedAt: "",
-            isCreatePlantCardClicked: false
         };
     }
 
     componentDidMount() {
-        this.fetchPlantData()
+        this._fetchPlantCard()
     }
 
-    fetchPlantData = () => {
+    _fetchPlantCard = () => {
         api.getPlantCards()
         .then(res => {
-            console.log("PlantCards->fetchPlantData", res.body.plants);
-            this.setState({ plants: res.body.plants })
+            this.setState({ plants: res.body })
         })
         .catch(console.error)
-    }
-
-    _handlePlantCardCreate = () => {
-      this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
     }
 
     render() {

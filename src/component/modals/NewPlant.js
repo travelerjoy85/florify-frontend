@@ -38,8 +38,8 @@ export default class NewPlant extends Component {
         maxlux: maxlux,
         minlux: minlux
       }).then(() => {
-        this.props._handleCardCreate();
-        this.props._fetchCards();
+        this.props._handlePlantCardCreate();
+        this.props._fetchPlantCard();
       }).catch(console.error)
     }
   }
@@ -80,8 +80,8 @@ export default class NewPlant extends Component {
           <input type="text" ref="maxlux" onKeyUp={this._handleTyping}/><br/>
           <h5>Minlux</h5>
           <input type="text" ref="minlux" onKeyUp={this._handleTyping}/><br/>
-        <div className="create__board-button">
-          <button onClick={this._submitBoard}>Create Board</button>
+        <div className="create__card-button">
+          <button onClick={this._submitCard}>Create Board</button>
         </div>
         </div>
       </div>
