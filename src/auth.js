@@ -11,12 +11,13 @@ module.exports = {
     }
   },
 
-  signup(email, pass){
-    if(!email || !pass){
+  signup(signUpObj){
+    console.log("auth.js", signUpObj);
+    if(!signUpObj.email || !signUpObj.password){
       throw new Error('Please enter valid email or password')
     }
     else{
-      return api.requestSignUp(email, pass);
+      return api.requestSignUp(signUpObj);
     }
   },
 
@@ -25,6 +26,7 @@ module.exports = {
   },
 
   logout(){
+    console.log(localStorage.token, "auth.logout!!!!");
     return api.requestLogOut(localStorage.token)
     .then(res => {
       delete localStorage.token

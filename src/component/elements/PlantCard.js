@@ -11,8 +11,9 @@ export default class PlantCard extends Component {
   }
 
   _handleDelete = () => {
-    return api.deletePlantCard(this.props.id);
+    api.deletePlantCard(this.props.id);
   }
+
   render() {
     const isLoggedIn = auth.isLoggedIn();
     let { nickname, name, description, id } = this.props

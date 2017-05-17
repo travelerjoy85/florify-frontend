@@ -15,7 +15,11 @@ export default class SignUp extends Component {
         // deep destructuring equivalent to (let email = this.refs.email.value;)
         let { email: {value: email}, password: {value: password}, phone: {value: phone} } = this.refs;
         if (email && password) {
-            auth.signup(email, password)
+            auth.signup({
+              email: email,
+              password: password,
+              phone: phone
+            })
                 .then(res => this.props.router.push('/login'))
                 .catch(console.error)
         }
