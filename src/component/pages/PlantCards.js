@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
-import PlantDetail from '../modals/PlantDetail';
+import PlantDetail from '../pages/PlantDetail';
 // import auth from '../../auth';
 import './PlantCards.css';
 import Util from '../../util';
@@ -23,13 +23,19 @@ export default class PlantCards extends Component {
             minhum: "",
             maxLux: "",
             minlux: "",
-            updatedAt: "",
+            updatedAt: ""
         };
     }
 
     componentDidMount() {
-        this._fetchPlantCard()
+        // this._fetchPlantCard()
     }
+
+    // componentDidUpdate = (prevProp, prevState) => {
+    //   if(prevState!== this.state){
+    //     this._fetchPlantCard()
+    //   }
+    // }
 
     _fetchPlantCard = () => {
         api.getPlantCards()
@@ -58,6 +64,7 @@ export default class PlantCards extends Component {
                         minlux={plant.minlux}
                         updatedAt={plant.updatedAt}
                     />
+
                 )}
             </div>
         );

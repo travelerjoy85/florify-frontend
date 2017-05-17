@@ -54,7 +54,6 @@ class Menu extends Component {
           : null}
 
           {isLoggedIn ?
-
             <Link to="/logout" className="menu__item" onClick={closeMenuAndLogout}>
               Logout
             </Link>

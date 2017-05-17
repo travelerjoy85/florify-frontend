@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-// import './Logout.css';
-import auth from '../../auth';
+import auth from '../../auth'
+
 
 export default class Logout extends Component{
 
@@ -18,7 +18,6 @@ export default class Logout extends Component{
     render() {
         return(
             <div>
-                <h1>You are logged out</h1>
             </div>
         );
     }
@@ -27,3 +26,4 @@ export default class Logout extends Component{
 }
 
 // TODO: request delete session 2 times when we log out, fix this.
+

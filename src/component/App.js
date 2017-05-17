@@ -26,8 +26,9 @@ class App extends Component {
 
   // _handleLogout = () => {
   //   auth.logout()
-  //  .then(res => this.props..push('/'));
-  //  }
+  //   // .then(res => this.props..push('/'));
+  // }
+
 
   // componentDidUpdate(){
   //   let newTitle = util.getTitle()
