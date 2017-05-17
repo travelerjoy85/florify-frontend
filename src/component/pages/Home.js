@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
- import api from '../../api';
- import PlantCards from '../pages/PlantCards';
- //import AddButton from '../elements/AddButton';
- import AddButton2 from '../elements/AddButton2';
- import auth from '../../auth';
- import './Home.css';
- import NewPlant from '../modals/NewPlant';
- import PlantDetail from '../modals/PlantDetail'
+
+import api from '../../api';
+import PlantCards from '../pages/PlantCards';
+//import AddButton from '../elements/AddButton';
+import AddButton2 from '../elements/AddButton2';
+import auth from '../../auth';
+import './Home.css';
+import NewPlant from '../modals/NewPlant';
+import PlantDetail from '../pages/PlantDetail'
 
 
 
@@ -31,17 +32,17 @@ import React, {Component} from 'react';
         this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
       }
 
-      render() {
-          console.log(auth.isLoggedIn(), "check if loggedin!!!!")
-          let { plantcards } = this.state;
-         return (
-             <div className="home">
-                  <PlantDetail/>
-                  <PlantCards/>
-                  {auth.isLoggedIn() ? <AddButton2 _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
-                  {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} plantId={this.plantId}/> : null }
-              </div>
-          );
-      }
+
+    render() {
+        console.log(auth.isLoggedIn(), "check if loggedin!!!!")
+        let { plantcards } = this.state;
+        return (
+            <div className="home">
+                <PlantCards/>
+                {auth.isLoggedIn() ? <AddButton2 _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
+                {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} userId={this.userId}/> : null }
+            </div>
+        );
+    }
 
  }

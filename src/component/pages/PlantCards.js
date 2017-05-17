@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
-import PlantDetail from '../modals/PlantDetail';
+import PlantDetail from '../pages/PlantDetail';
 // import auth from '../../auth';
 import './PlantCards.css';
 import Util from '../../util';
