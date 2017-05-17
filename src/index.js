@@ -6,13 +6,14 @@ import './index.css';
 import Home from './component/pages/Home';
 import SignUp from './component/pages/SignUp';
 import PlantCards from './component/pages/PlantCards';
+import PlantDetail from './component/pages/PlantDetail';
 import Login from './component/pages/Login';
 
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="/plants/:id" component={PlantCards} />
+      <Route path="/plant/:id" component={PlantDetail} />
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
     </Route>
