@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
-// import { Redirect } from 'react-router';
 import './PlantCard.css';
 import auth from '../../auth';
 import api from '../../api'
@@ -40,6 +39,6 @@ export default class PlantCard extends Component {
           </div>
         </div>
       );
-    } 
+    }
   }
 }
