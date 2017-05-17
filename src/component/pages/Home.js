@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-//import api from '../../api';
+import api from '../../api';
 import PlantCards from '../pages/PlantCards';
 //import AddButton from '../elements/AddButton';
 import AddButton2 from '../elements/AddButton2';
 import auth from '../../auth';
 import './Home.css';
 import NewPlant from '../modals/NewPlant';
-import PlantDetail from '../pages/PlantDetail'
+//import PlantDetail from '../pages/PlantDetail'
 
 
 
