@@ -4,14 +4,16 @@ import Menu from './modals/Menu';
 //import auth from '';
 //import util from '';
 import auth from '../auth';
+import util from '../util';
+import api from '../api';
 
 class App extends Component {
-
   constructor(props) {
     super(props)
     this.state = {
       isMenuOpen: false,
       title: 'Dashboardly'
+
     }
   }
 
@@ -21,6 +23,7 @@ class App extends Component {
     this.closeMenu()
     this._handleLogout()
   }
+
   _handleLogout = () => {
     auth.logout()
     // .then(res => this.props..push('/'));
