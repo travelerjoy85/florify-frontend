@@ -39,7 +39,7 @@ export default class EditPlantCard extends Component {
         minlux: minlux
       }).then(() => {
         this.props._handleCardCreate();
-        this.props._fetchCards();
+        this.props._fetchPlantCard();
       }).catch(conso.elerror)
     }
   }

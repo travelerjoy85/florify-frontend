@@ -36,9 +36,8 @@ class Api {
   getPlantCards = (token) => {
     return superagent
     .get(`${API_HOST}/plants`)
-    .send({token})
-    .set('Authorization', `token ${token}`)
-    .set('Accept', 'application/json')
+    .set('Authorization', `token ${localStorage.token}`)
+    .set('Content-Type', 'application/json')
   }
 
   // Return single plant card with 4 charts on the page, waiting for endpoints
@@ -53,6 +52,7 @@ class Api {
   deletePlantCard = (id) => {
     return superagent
     .delete(`${API_HOST}/plants/${id}`)
+    .set('Authorization', `token ${localStorage.token}`)
   }
 
   // Get the loggedin user profile
