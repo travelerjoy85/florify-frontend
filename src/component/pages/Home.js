@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import api from '../../api';
 import PlantCards from '../pages/PlantCards';
-import AddButton from '../elements/AddButton';
+//import AddButton from '../elements/AddButton';
+import AddButton2 from '../elements/AddButton2';
 import auth from '../../auth';
 import './Home.css';
 import NewPlant from '../modals/NewPlant';
@@ -23,13 +24,18 @@ export default class Home extends Component {
       this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
     }
 
+    plantId = () => {
+      return this.props.params.id;
+    }
+
     render() {
+        console.log(auth.isLoggedIn(), "check if loggedin!!!!")
         let { plantcards } = this.state;
         return (
             <div className="home">
-                <PlantDetail />
+                <PlantDetail/>
                 <PlantCards/>
-                {auth.isLoggedIn() ? <AddButton _handleButton={this._handlePlantCardCreate}/> : null}
+                {auth.isLoggedIn() ? <AddButton2 _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
                 {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} plantId={this.plantId}/> : null }
             </div>
         );
