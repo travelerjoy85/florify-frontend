@@ -1,3 +1,3 @@
 module.exports = {
-  API_HOST: "http://4b994653.ngrok.io"
+  API_HOST: "http://2555e8ad.ngrok.io"
 }

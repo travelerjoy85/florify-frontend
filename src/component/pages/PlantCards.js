@@ -23,13 +23,19 @@ export default class PlantCards extends Component {
             minhum: "",
             maxLux: "",
             minlux: "",
-            updatedAt: "",
+            updatedAt: ""
         };
     }
 
     componentDidMount() {
         this._fetchPlantCard()
     }
+
+    // componentDidUpdate = (prevProp, prevState) => {
+    //   if(prevState!== this.state){
+    //     this._fetchPlantCard()
+    //   }
+    // }
 
     _fetchPlantCard = () => {
         api.getPlantCards()
@@ -58,6 +64,7 @@ export default class PlantCards extends Component {
                         minlux={plant.minlux}
                         updatedAt={plant.updatedAt}
                     />
+
                 )}
             </div>
         );

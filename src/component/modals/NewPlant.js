@@ -41,7 +41,6 @@ export default class NewPlant extends Component {
         minhum: minhum,
         maxlux: maxlux,
         minlux: minlux,
-        plantId: this.props.plantId
       }).then(() => {
         this.props._handlePlantCardCreate();
         this.props._fetchPlantCard();

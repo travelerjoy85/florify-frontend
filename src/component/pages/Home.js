@@ -19,13 +19,16 @@ export default class Home extends Component {
         };
     }
 
+    _fetchPlantCard = () => {
+        api.getPlantCards()
+        .then(res => {
+            this.setState({ plants: res.body })
+        })
+        .catch(console.error)
+    }
 
     _handlePlantCardCreate = () => {
       this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
-    }
-
-    plantId = () => {
-      return this.props.params.id;
     }
 
     render() {
@@ -36,7 +39,7 @@ export default class Home extends Component {
                 <PlantDetail/>
                 <PlantCards/>
                 {auth.isLoggedIn() ? <AddButton2 _handlePlantCardCreate={this._handlePlantCardCreate}/> : null}
-                {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} plantId={this.plantId}/> : null }
+                {this.state.isCreatePlantCardClicked ? <NewPlant _handlePlantCardCreate={this._handlePlantCardCreate} _fetchPlantCard={this._fetchPlantCard} userId={this.userId}/> : null }
             </div>
         );
     }
