@@ -7,6 +7,7 @@ import Home from './component/pages/Home';
 import SignUp from './component/pages/SignUp';
 import PlantCards from './component/pages/PlantCards';
 import Login from './component/pages/Login';
+import Logout from './component/pages/Logout';
 
 const routes = (
   <Router history={browserHistory}>
@@ -15,6 +16,7 @@ const routes = (
       <Route path="/plants/:id" component={PlantCards} />
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
+      <Route path="/logout" component={Logout} />
     </Route>
   </Router>
 );

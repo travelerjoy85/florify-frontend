@@ -10,6 +10,10 @@ export default class NewPlant extends Component {
     this.state = {};
   }
 
+  plantId = () => {
+    return this.props.params.id;
+  }
+
   _submitCard = () => {
     let{
       nickname: {value: nickname},
@@ -36,7 +40,8 @@ export default class NewPlant extends Component {
         maxhum: maxhum,
         minhum: minhum,
         maxlux: maxlux,
-        minlux: minlux
+        minlux: minlux,
+        plantId: this.props.plantId
       }).then(() => {
         this.props._handlePlantCardCreate();
         this.props._fetchPlantCard();
@@ -81,7 +86,7 @@ export default class NewPlant extends Component {
           <h5>Minlux</h5>
           <input type="text" ref="minlux" onKeyUp={this._handleTyping}/><br/>
         <div className="create__card-button">
-          <button onClick={this._submitCard}>Create Board</button>
+          <button onClick={this._submitCard}>Submit Plant</button>
         </div>
         </div>
       </div>

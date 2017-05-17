@@ -26,7 +26,6 @@ module.exports = {
   },
 
   logout(){
-    console.log(localStorage.token, "auth.logout!!!!");
     return api.requestLogOut(localStorage.token)
     .then(res => {
       delete localStorage.token
