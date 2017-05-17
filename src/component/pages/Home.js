@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import api from '../../api';
 import PlantCards from '../pages/PlantCards';
 //import AddButton from '../elements/AddButton';
@@ -10,26 +11,27 @@ import NewPlant from '../modals/NewPlant';
 
 
 
-export default class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isCreatePlantCardClicked: false,
-            isDeleteButtonClicked: false
-        };
-    }
+ export default class Home extends Component {
+     constructor(props) {
+         super(props);
+         this.state = {
+             isCreatePlantCardClicked: false,
+             isDeleteButtonClicked: false
+          };
+      }
 
     _fetchPlantCard = () => {
-        api.getPlantCards()
-        .then(res => {
-            this.setState({ plants: res.body })
-        })
-        .catch(console.error)
-    }
+         api.getPlantCards()
+         .then(res => {
+             this.setState({ plants: res.body })
+         })
+         .catch(console.error)
+     }
 
-    _handlePlantCardCreate = () => {
-      this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
-    }
+      _handlePlantCardCreate = () => {
+        this.setState({ isCreatePlantCardClicked: !this.state.isCreatePlantCardClicked })
+      }
+
 
     render() {
         console.log(auth.isLoggedIn(), "check if loggedin!!!!")
@@ -43,4 +45,4 @@ export default class Home extends Component {
         );
     }
 
-}
+ }
