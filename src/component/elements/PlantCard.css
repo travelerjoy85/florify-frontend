@@ -2,4 +2,23 @@
   background: white;
   border: 1px solid grey;
   border-radius: 5px;
+  height: 350px;
+  width: 250px;
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+/*.card-edit {*/
+  /*display: flex;*/
+  /*justify-content: space-around;*/
+/*}*/
+
+/*.card-edit button {*/
+  /*padding: 5px;*/
+  /*width: 60px;*/
+  /*border-radius: 5px;*/
+  /*background: #1F3E18;*/
+  /*color: #F8F8F8;*/
+/*}*/

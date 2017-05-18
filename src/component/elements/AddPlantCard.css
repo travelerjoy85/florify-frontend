@@ -1,8 +1,11 @@
 .plant-card {
-  background: white;
-  border: 1px solid grey;
-  border-radius: 5px;
-  height: 140px;
-  width: 120px;
-  margin: 8px;
-}
+   background: white;
+   border: 1px solid grey;
+   border-radius: 5px;
+   height: 350px;
+   width: 250px;
+   margin: 8px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+ }
