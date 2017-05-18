@@ -21,7 +21,7 @@ export default class PlantCard extends Component {
     if(isLoggedIn){
       return(
         <div>
-          <Link to={`/plants/${id}`}>
+          <Link to={`/plant/${id}`}>
             <div className="plant-card">
               <div className="card-container">
                 <div className="card-item">

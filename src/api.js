@@ -33,7 +33,7 @@ class Api {
   }
 
   // Return the latest basic info on all plantes, match with endpoints
-  getPlantCards = (token) => {
+  getPlants = (token) => {
     return superagent
     .get(`${API_HOST}/plants`)
     .set('Authorization', `token ${localStorage.token}`)

@@ -9,7 +9,7 @@ import CreatePlant from '../modals/CreatePlant';
 
 
 
-<<<<<<< HEAD
+
 // This component is the INDEXROUTE "/"
 // it is responsible for fetching the plantsdata and map it to a
 // bunch of <PlantCard />'s.
@@ -21,11 +21,17 @@ import CreatePlant from '../modals/CreatePlant';
 // which allows it to close itself upon submitting.
 
 export default class Home extends Component {
-  
+  constructor(){
+    super();
+    this.state={
+      plants:[]
+    }
+  }
+
   componentDidMount() {
       this._fetchPlants()
   }
-  
+
   _fetchPlants = () => {
       api.getPlants()
       .then(res => {
