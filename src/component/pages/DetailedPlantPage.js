@@ -54,9 +54,12 @@ export default class DetailedPlantPage extends Component {
   _fetchPlantCard = () => {
       api.getPlantDetail(this.props.params.id)
       .then(res => {
-
         let datum = res.body.readings
-        console.log(res.body.readings)
+
+        let currentHum = datum.hum[datum.hum.length-1].reading
+        let currentTemp = datum.temp[datum.temp.length-1].reading
+        let currentLux = datum.lux[datum.lux.length-1].reading
+        let currentFertility = datum.ph[datum.ph.length-1].reading
 
         let humDataSet = this._dataSetFactory(HUMIDITY, datum.hum)
         let tempDataSet = this._dataSetFactory(TEMPERATURE, datum.temp)
@@ -67,17 +70,22 @@ export default class DetailedPlantPage extends Component {
         let templabels = datum.temp.map(el => moment(el.createdAt).format('h:mm:ss'))
         let luxlabels = datum.lux.map(el => moment(el.createdAt).format('h:mm:ss'))
         let fertilitylabels = datum.ph.map(el => moment(el.createdAt).format('h:mm:ss'))
+        console.log(currentTemp)
 
         this.setState({ data: {
           labels: humlabels,
           datasets: [humDataSet, fertilityDataSet, tempDataSet, luxDataSet]
-        } })
+        },
+          nickname: res.body.nickname,
+          description: res.body.description,
+          currentHum: currentHum,
+          currentTemp: currentTemp,
+          currentLux: currentLux,
+          currentFertility: currentFertility
+         })
       })
       .catch(console.error)
   }
-
-
-
 
   _dataSetFactory = (type, dataArray) => {
     if (type === HUMIDITY) {
@@ -122,31 +130,24 @@ export default class DetailedPlantPage extends Component {
     }
   }
 
-  noLongerNecessaryJustForYourReference = () => {
-    return {
-      labels: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00'],
-      datasets: [
-        // this._fetchPlantCard(HUMIDITY, {this.state.plant.readings.hum}),
-        // this._fetchPlantCard(TEMPERATURE, {this.state.plant.readings.temp}),
-        // this._dataSetFactory(LUX, {this.state.plant.readings.lux}),
-        // this._dataSetFactory(FERTILITY, {this.state.plant.readings.ph})
-      ]
-    }
-  }
-
   render() { // render chart
+    
+     let { nickname, name, description, data, currentHum, currentTemp, currentLux, currentFertility } = this.state
 
     return(
       <div className='DetailedPlantPage'>
         <div className='DetailedPlantPage-content'>
           <div className='DetailedPlantPage-info'>
-            <h2>HELLO</h2>
-            <p>{ this.props.name }</p>
-            <p>{ this.props.description }</p>
+            <h2>{ nickname }</h2>
+            <h4>{ description }</h4>
+            <p>{ currentHum } </p>
+            <p>{ currentTemp } </p>
+            <p>{ currentLux } </p>
+            <p>{ currentFertility } </p>
           </div>
           <div className='DetailedPlantPage-chart'>
-            {this.state.data &&
-              <Chart data={this.state.data}/>
+            { data &&
+              <Chart data={ data }/>
             }
           </div>
         </div>
