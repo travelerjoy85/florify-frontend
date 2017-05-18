@@ -16,7 +16,6 @@ import PlantDetail from '../pages/PlantDetail'
          super(props);
          this.state = {
              isCreatePlantCardClicked: false,
-             isDeleteButtonClicked: false
           };
       }
 

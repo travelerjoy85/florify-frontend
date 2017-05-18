@@ -29,6 +29,7 @@ import Util from '../../util';
 
       componentDidMount() {
           this._fetchPlantCard()
+          this._handleDelete()
       }
 
       _fetchPlantCard = () => {
