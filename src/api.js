@@ -69,7 +69,7 @@ class Api {
   }
 
   // For loggedin user to post a new plant card
-  postPlantCard = (plant) => {
+  addPlant = (plant) => {
     return this.getMe(localStorage.token)
     .then((profile) => {
       return superagent

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
 import AddPlantCard from '../elements/AddPlantCard';
@@ -8,8 +7,11 @@ import './Home.css';
 import CreatePlant from '../modals/CreatePlant';
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 4c4ca2b2d814a820c8ae66d767b11f13ede09db3
 // This component is the INDEXROUTE "/"
 // it is responsible for fetching the plantsdata and map it to a
 // bunch of <PlantCard />'s.
@@ -21,10 +23,10 @@ import CreatePlant from '../modals/CreatePlant';
 // which allows it to close itself upon submitting.
 
 export default class Home extends Component {
-  constructor(){
-    super();
-    this.state={
-      plants:[]
+  constructor(props) {
+    super(props)
+    this.state = {
+      showCreateModal: false
     }
   }
 
@@ -41,6 +43,7 @@ export default class Home extends Component {
       .catch(console.error)
   }
 
+  _toggleCreateModal = () => this.setState({showCreateModal: !this.state.showCreateModal})
 
   render() {
       let { plants } = this.state
@@ -62,6 +65,9 @@ export default class Home extends Component {
                 updatedAt={plant.updatedAt}
               />
             )}
+            <AddPlantCard showModal={this._toggleCreateModal} />
+            {this.state.showCreateModal && <CreatePlant />}
+
           </div>
       );
   }
