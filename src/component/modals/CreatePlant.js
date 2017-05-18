@@ -31,32 +31,14 @@ export default class CreatePlant extends Component {
     let{
       nickname: {value: nickname},
       name: {value: name},
-      description: {value: description},
-      maxtemp: {value: maxtemp},
-      mintemp: {value: mintemp},
-      maxph: {value: maxph},
-      minph: {value: minph},
-      maxhum: {value: maxhum},
-      minhum: {value: minhum},
-      maxlux: {value: maxlux},
-      minlux: {value: minlux}
+      description: {value: description}
     } = this.refs;
     if(nickname){
-      api.postPlantCard({
+      api.addPlant({
         nickname: nickname,
         name: name,
-        description: description,
-        maxtemp: maxtemp,
-        mintemp: mintemp,
-        maxph: maxph,
-        minph: minph,
-        maxhum: maxhum,
-         minhum: minhum,
-         maxlux: maxlux,
-         minlux: minlux,
-         plantId: this.props.plantId
+        description: description
        }).then(() => {
-         this.props._handlePlantCardCreate();
          this.props._fetchPlantCard();
       }).catch(console.error)
     }
@@ -84,22 +66,6 @@ export default class CreatePlant extends Component {
           <input type="text" ref="name" onKeyUp={this._handleTyping}/><br/>
           <h5>description</h5>
           <input type="test" ref="description" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxtemp</h5>
-          <input type="text" ref="maxtemp" onKeyUp={this._handleTyping}/><br/>
-          <h5>Mintemp</h5>
-          <input type="text" ref="mintemp" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxph</h5>
-          <input type="text" ref="maxph" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minph</h5>
-          <input type="text" ref="minph" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxhum</h5>
-          <input type="text" ref="maxhum" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minhum</h5>
-          <input type="text" ref="minhum" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxlux</h5>
-          <input type="text" ref="maxlux" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minlux</h5>
-          <input type="text" ref="minlux" onKeyUp={this._handleTyping}/><br/>
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>
           </div>

@@ -50,10 +50,13 @@ class Api {
   }
 
   // For loggedin user to delete plant card
-  deletePlantCard = (id) => {
-    return superagent
+  deletePlant = (id) => {
+    console.log("trying to delete", id);
+    superagent
     .delete(`${API_HOST}/plants/${id}`)
     .set('Authorization', `token ${localStorage.token}`)
+    .then(res => console.log('successful delete'))
+    .catch(console.error)
   }
 
   // Get the loggedin user profile
@@ -68,6 +71,14 @@ class Api {
     })
   }
 
+  updatePlant = (plantData) => (
+    superagent
+    .patch(`${API_HOST}/plants/${plantData.id}`)
+    .send(plantData)
+    .set('Authorization', `token ${localStorage.token}`)
+    .catch(err => console.error(err))
+  )
+
   // For loggedin user to post a new plant card
   addPlant = (plant) => {
     return this.getMe(localStorage.token)
@@ -79,14 +90,6 @@ class Api {
         nickname: plant.nickname,
         name: plant.name,
         description: plant.description,
-        maxtemp: plant.maxtemp,
-        mintemp: plant.mintemp,
-        maxph: plant.maxph,
-        minph: plant.minph,
-        maxhum: plant.maxhum,
-        minhum: plant.minhum,
-        maxlux: plant.maxlux,
-        minlux: plant.minlux
       })
       .set('Authorization', `token ${localStorage.token}`)
       .set('Accept', 'application/json')
