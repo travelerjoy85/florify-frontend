@@ -9,10 +9,9 @@ import auth from '../../auth';
 export default class AddPlantCard extends Component {
 
   render() {
-
-    let { nickname, name, description, id } = this.props
+    let { nickname, name, description, id, showModal } = this.props
     return (
-      <div className="plant-card">
+      <div className="plant-card" onClick={showModal}>
         <h2> Add a plant </h2>
       </div>
     );
