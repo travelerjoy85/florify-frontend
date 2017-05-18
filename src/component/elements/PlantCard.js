@@ -9,6 +9,7 @@ export default class PlantCard extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    isDeleteButtonClicked: false
   }
 
   _handleDelete = () => {

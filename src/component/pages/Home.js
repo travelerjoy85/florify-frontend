@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
 import AddPlantCard from '../elements/AddPlantCard';
@@ -19,11 +18,17 @@ import CreatePlant from '../modals/CreatePlant';
 // which allows it to close itself upon submitting.
 
 export default class Home extends Component {
-  
+  constructor(props) {
+    super(props)
+    this.state = {
+      showCreateModal: false
+    }
+  }
+
   componentDidMount() {
       this._fetchPlants()
   }
-  
+
   _fetchPlants = () => {
       api.getPlants()
       .then(res => {
@@ -33,6 +38,7 @@ export default class Home extends Component {
       .catch(console.error)
   }
 
+  _toggleCreateModal = () => this.setState({showCreateModal: !this.state.showCreateModal})
 
   render() {
       let { plants } = this.state
@@ -54,6 +60,9 @@ export default class Home extends Component {
                 updatedAt={plant.updatedAt}
               />
             )}
+            <AddPlantCard showModal={this._toggleCreateModal} />
+            {this.state.showCreateModal && <CreatePlant />}
+
           </div>
       );
   }
