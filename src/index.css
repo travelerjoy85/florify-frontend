@@ -20,6 +20,10 @@ input {
   padding-top: 18px;
 }
 
+input:focus {
+  outline-width: 0;
+}
+
 input::placeholder {
   color: #274A23;
   text-align: right;
