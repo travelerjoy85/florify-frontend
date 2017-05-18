@@ -43,7 +43,7 @@ export default class Home extends Component {
   render() {
       let { plants } = this.state
       return (
-          <div className="plantInfo">
+          <div className="home">
             { plants && plants.map(plant =>
               <PlantCard
                 key={plant.id}
@@ -61,7 +61,9 @@ export default class Home extends Component {
               />
             )}
             <AddPlantCard showModal={this._toggleCreateModal} />
-            {this.state.showCreateModal && <CreatePlant />}
+            {this.state.showCreateModal &&
+              <div className="backdrop"><CreatePlant /></div>
+            }
 
           </div>
       );

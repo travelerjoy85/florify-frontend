@@ -23,9 +23,9 @@ export default class PlantCard extends Component {
 
 
       return(
-        <div>
+        <div className="plant-card">
+
           <Link to={`/plants/${id}`}>
-            <div className="plant-card">
               <div className="card-container">
                 <div className="card-item">
                   <h2>{ nickname }</h2>
@@ -35,12 +35,13 @@ export default class PlantCard extends Component {
                 <div className="card-item2">
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+
           <div className="card-edit">
             <button onClick={this._handleSignup}>Edit</button>
             <button type="button" onClick={this._handleDelete}>Delete</button>
           </div>
+
         </div>
       );
   }
