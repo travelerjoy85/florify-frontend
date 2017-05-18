@@ -5,11 +5,10 @@ export default class Chart extends Component {
   render() {
     return (
       <div style={{maxHeight: '400px'}}>
-        <h2>Line Example</h2>
         <Line
           data={this.props.data}
-	         width={100}
-	         height={50}
+	         width={400}
+	         height={500}
            tooltips= {{
              enabled: false
            }}

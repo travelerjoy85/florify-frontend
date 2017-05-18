@@ -31,32 +31,14 @@ export default class CreatePlant extends Component {
     let{
       nickname: {value: nickname},
       name: {value: name},
-      description: {value: description},
-      maxtemp: {value: maxtemp},
-      mintemp: {value: mintemp},
-      maxph: {value: maxph},
-      minph: {value: minph},
-      maxhum: {value: maxhum},
-      minhum: {value: minhum},
-      maxlux: {value: maxlux},
-      minlux: {value: minlux}
+      description: {value: description}
     } = this.refs;
     if(nickname){
-      api.postPlantCard({
+      api.addPlant({
         nickname: nickname,
         name: name,
-        description: description,
-        maxtemp: maxtemp,
-        mintemp: mintemp,
-        maxph: maxph,
-        minph: minph,
-        maxhum: maxhum,
-         minhum: minhum,
-         maxlux: maxlux,
-         minlux: minlux,
-         plantId: this.props.plantId
+        description: description
        }).then(() => {
-         this.props._handlePlantCardCreate();
          this.props._fetchPlantCard();
       }).catch(console.error)
     }
@@ -78,17 +60,13 @@ export default class CreatePlant extends Component {
     return(
       <div className="create-plant-modal">
           <h1>Create Plant Card</h1>
-          <input type="text"  placeholder="Nickname"  ref="nickname" onKeyUp={this._handleTyping}/><br/>
-          <input type="text"  placeholder="Name" ref="name" onKeyUp={this._handleTyping}/><br/>
-          <input type="test"  placeholder="Description" ref="description" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Maxtemp" ref="maxtemp" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Mintemp" ref="mintemp" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Maxph" ref="maxph" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Minph" ref="minph" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Maxhum" ref="maxhum" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Minhum" ref="minhum" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Maxlux" ref="maxlux" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Minlux" ref="minlux" onKeyUp={this._handleTyping}/><br/>
+          <h5>Nickname</h5>
+          <input type="text" ref="nickname" onKeyUp={this._handleTyping}/><br/>
+          <h5>Name</h5>
+          <input type="text" ref="name" onKeyUp={this._handleTyping}/><br/>
+          <h5>description</h5>
+          <input type="test" ref="description" onKeyUp={this._handleTyping}/><br/>
+
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>
           </div>
