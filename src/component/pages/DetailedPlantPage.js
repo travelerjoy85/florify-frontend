@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './PlantDetail.css';
+import './DetailedPlantPage.css';
 import Chart from '../charts/Chart.js'
 import api from '../../api';
 import moment from 'moment'
@@ -19,7 +19,7 @@ const fertilityColor1 = 'rgba(50,50,200, 0.4)'
 const fertilityColor2 = 'rgba(50,50,200, 1)'
 
 
-export default class PlantDetail extends Component {
+export default class DetailedPlantPage extends Component {
   constructor(props) {
     super(props);
     this.state = {};
