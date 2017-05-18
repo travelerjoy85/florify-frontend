@@ -31,32 +31,14 @@ export default class CreatePlant extends Component {
     let{
       nickname: {value: nickname},
       name: {value: name},
-      description: {value: description},
-      maxtemp: {value: maxtemp},
-      mintemp: {value: mintemp},
-      maxph: {value: maxph},
-      minph: {value: minph},
-      maxhum: {value: maxhum},
-      minhum: {value: minhum},
-      maxlux: {value: maxlux},
-      minlux: {value: minlux}
+      description: {value: description}
     } = this.refs;
     if(nickname){
-      api.postPlantCard({
+      api.addPlant({
         nickname: nickname,
         name: name,
-        description: description,
-        maxtemp: maxtemp,
-        mintemp: mintemp,
-        maxph: maxph,
-        minph: minph,
-        maxhum: maxhum,
-         minhum: minhum,
-         maxlux: maxlux,
-         minlux: minlux,
-         plantId: this.props.plantId
+        description: description
        }).then(() => {
-         this.props._handlePlantCardCreate();
          this.props._fetchPlantCard();
       }).catch(console.error)
     }
