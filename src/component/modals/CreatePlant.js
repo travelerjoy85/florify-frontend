@@ -27,7 +27,8 @@ export default class CreatePlant extends Component {
      return this.props.params.id;
    }
 
-  _submitCard = () => {
+  _submitCard = (event) => {
+    event.preventDefault();
     let{
       nickname: {value: nickname},
       name: {value: name},
@@ -38,20 +39,20 @@ export default class CreatePlant extends Component {
         nickname: nickname,
         name: name,
         description: description
-       }).then(() => {
-         this.props._fetchPlantCard();
-      }).catch(console.error)
+      }).then(() => {
+        this.props._fetchPlantCard();
+      })
+      .catch(console.error)
     }
     this.props.closeModal()
   }
-
 
    _handleTyping = (e) => {
      if(this.state && this.state.error){
        this.setState({error: null})
      }
      if(e.keyCode === ENTER){
-       this._submitCard()
+       this._submitCard(event);
      }
    }
 

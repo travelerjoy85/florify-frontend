@@ -60,6 +60,7 @@ class Api {
 
   // Get the loggedin user profile
   getMe = (token) => {
+    console.log(token, "getme!");
     return superagent
     .get(`${API_HOST}/auth/me`)
     .send({token})
@@ -80,6 +81,7 @@ class Api {
 
   // For loggedin user to post a new plant card
   addPlant = (plant) => {
+    console.log(localStorage.token, "token~!!!!!");
     return this.getMe(localStorage.token)
     .then((profile) => {
       return superagent
