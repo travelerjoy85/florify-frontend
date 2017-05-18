@@ -84,22 +84,6 @@ export default class CreatePlant extends Component {
           <input type="text" ref="name" onKeyUp={this._handleTyping}/><br/>
           <h5>description</h5>
           <input type="test" ref="description" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxtemp</h5>
-          <input type="text" ref="maxtemp" onKeyUp={this._handleTyping}/><br/>
-          <h5>Mintemp</h5>
-          <input type="text" ref="mintemp" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxph</h5>
-          <input type="text" ref="maxph" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minph</h5>
-          <input type="text" ref="minph" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxhum</h5>
-          <input type="text" ref="maxhum" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minhum</h5>
-          <input type="text" ref="minhum" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxlux</h5>
-          <input type="text" ref="maxlux" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minlux</h5>
-          <input type="text" ref="minlux" onKeyUp={this._handleTyping}/><br/>
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>
           </div>

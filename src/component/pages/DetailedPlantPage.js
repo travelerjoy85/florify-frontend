@@ -4,10 +4,10 @@ import Chart from '../charts/Chart.js'
 import api from '../../api';
 import moment from 'moment'
 
-const HUMIDITY = 'humidity'
-const TEMPERATURE = 'temperature'
+const HUMIDITY = 'hum'
+const TEMPERATURE = 'temp'
 const LUX = 'lux'
-const FERTILITY = 'fertility'
+const FERTILITY = 'ph'
 
 const humidityColor1 = 'rgba(50,50,200, 0.4)'
 const humidityColor2 = 'rgba(50,50,200, 1)'
@@ -52,35 +52,47 @@ export default class DetailedPlantPage extends Component {
 
 
   _fetchPlantCard = () => {
-    console.log(this.props.id)
-    console.log('ello', this.props)
       api.getPlantDetail(this.props.params.id)
       .then(res => {
-        console.log(res.body)
-
         let datum = res.body.readings
 
-        let humDataSet = this._dataSetFactory(HUMIDITY, datum.hum)
-        let labels = datum.hum.map(el => moment(el.createdAt).format('h:mm:ss'))
+        let currentHum = datum.hum[datum.hum.length-1].reading
+        let currentTemp = datum.temp[datum.temp.length-1].reading
+        let currentLux = datum.lux[datum.lux.length-1].reading
+        let currentFertility = datum.ph[datum.ph.length-1].reading
 
-        console.log(labels, humDataSet)
+        let humDataSet = this._dataSetFactory(HUMIDITY, datum.hum)
+        let tempDataSet = this._dataSetFactory(TEMPERATURE, datum.temp)
+        let luxDataSet = this._dataSetFactory(LUX, datum.lux)
+        let fertilityDataSet = this._dataSetFactory(FERTILITY, datum.ph)
+
+        let humlabels = datum.hum.map(el => moment(el.createdAt).format('h:mm:ss'))
+        let templabels = datum.temp.map(el => moment(el.createdAt).format('h:mm:ss'))
+        let luxlabels = datum.lux.map(el => moment(el.createdAt).format('h:mm:ss'))
+        let fertilitylabels = datum.ph.map(el => moment(el.createdAt).format('h:mm:ss'))
+        console.log(currentTemp)
 
         this.setState({ data: {
-          labels: labels,
-          datasets: [humDataSet]
-        } })
+          labels: humlabels,
+          datasets: [humDataSet, fertilityDataSet, tempDataSet, luxDataSet]
+        },
+          nickname: res.body.nickname,
+          description: res.body.description,
+          currentHum: currentHum,
+          currentTemp: currentTemp,
+          currentLux: currentLux,
+          currentFertility: currentFertility
+         })
       })
       .catch(console.error)
   }
 
-
-
-
   _dataSetFactory = (type, dataArray) => {
     if (type === HUMIDITY) {
       return {
+        label: 'humidity',
         fill: false,
-        lineTension: 0.1,
+        lineTension: 0.3,
         backgroundColor: humidityColor1,
         borderColor: humidityColor2,
         data: dataArray.map(el => el.reading)
@@ -88,39 +100,57 @@ export default class DetailedPlantPage extends Component {
     }
     if (type === TEMPERATURE) {
       return {
+        label: 'temperature',
         fill: false,
-        lineTension: 0.1,
+        lineTension: 0.3,
         backgroundColor: temperatureColor1,
         borderColor: temperatureColor2,
         data: dataArray.map(el => el.reading)
       }
     }
-  }
-
-  noLongerNecessaryJustForYourReference = () => {
-    return {
-      labels: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00'],
-      datasets: [
-        // this._fetchPlantCard(HUMIDITY, {this.state.plant.readings.hum}),
-        // this._fetchPlantCard(TEMPERATURE, {this.state.plant.readings.temp}),
-        // this._dataSetFactory(LUX, {this.state.plant.readings.lux}),
-        // this._dataSetFactory(FERTILITY, {this.state.plant.readings.ph})
-      ]
+    if (type === LUX) {
+      return {
+        label: 'Light',
+        fill: false,
+        lineTension: 0.3,
+        backgroundColor: luxColor1,
+        borderColor: luxColor2,
+        data: dataArray.map(el => el.reading)
+      }
+    }
+    if (type === FERTILITY) {
+      return {
+        label: 'pH',
+        fill: false,
+        lineTension: 0.3,
+        backgroundColor: fertilityColor1,
+        borderColor: fertilityColor2,
+        data: dataArray.map(el => el.reading)
+      }
     }
   }
 
   render() { // render chart
-    console.log(this.state.data)
+    
+     let { nickname, name, description, data, currentHum, currentTemp, currentLux, currentFertility } = this.state
+
     return(
-      <div className='plant-card'>
-        <div>
-          <h2>{ this.props.nickname }</h2>
-          <p>{ this.props.name }</p>
-          <p>{ this.props.description }</p>
+      <div className='DetailedPlantPage'>
+        <div className='DetailedPlantPage-content'>
+          <div className='DetailedPlantPage-info'>
+            <h2>{ nickname }</h2>
+            <h4>{ description }</h4>
+            <p>{ currentHum } </p>
+            <p>{ currentTemp } </p>
+            <p>{ currentLux } </p>
+            <p>{ currentFertility } </p>
+          </div>
+          <div className='DetailedPlantPage-chart'>
+            { data &&
+              <Chart data={ data }/>
+            }
+          </div>
         </div>
-        {this.state.data &&
-          <Chart data={this.state.data} />
-        }
       </div>
     );
   }
