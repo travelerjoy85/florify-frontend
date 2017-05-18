@@ -60,6 +60,7 @@ export default class CreatePlant extends Component {
          this.props._fetchPlantCard();
       }).catch(console.error)
     }
+    this.props.closeModal()
   }
 
 
