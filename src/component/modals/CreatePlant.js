@@ -60,6 +60,7 @@ export default class CreatePlant extends Component {
          this.props._fetchPlantCard();
       }).catch(console.error)
     }
+    this.props.closeModal()
   }
 
 
@@ -75,8 +76,7 @@ export default class CreatePlant extends Component {
 
   render(){
     return(
-      <div className="create__card">
-        <div className="create__card-content">
+      <div className="create-plant-modal">
           <h1>Create Plant Card</h1>
           <h5>Nickname</h5>
           <input type="text" ref="nickname" onKeyUp={this._handleTyping}/><br/>
@@ -87,7 +87,6 @@ export default class CreatePlant extends Component {
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>
           </div>
-        </div>
       </div>
     );
   }
