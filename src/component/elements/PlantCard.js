@@ -31,7 +31,7 @@ export default class PlantCard extends Component {
       return(
         <div className="plant-card">
 
-          <Link to={`/plants/${id}`}>
+          <Link to={`/plant/${id}`}>
               <div className="card-container">
                 <div className="card-item">
                   <h2>{ nickname }</h2>
