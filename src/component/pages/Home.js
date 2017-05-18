@@ -7,11 +7,7 @@ import './Home.css';
 import CreatePlant from '../modals/CreatePlant';
 
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 4c4ca2b2d814a820c8ae66d767b11f13ede09db3
 // This component is the INDEXROUTE "/"
 // it is responsible for fetching the plantsdata and map it to a
 // bunch of <PlantCard />'s.
