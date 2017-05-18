@@ -78,28 +78,17 @@ export default class CreatePlant extends Component {
     return(
       <div className="create-plant-modal">
           <h1>Create Plant Card</h1>
-          <h5>Nickname</h5>
-          <input type="text" ref="nickname" onKeyUp={this._handleTyping}/><br/>
-          <h5>Name</h5>
-          <input type="text" ref="name" onKeyUp={this._handleTyping}/><br/>
-          <h5>description</h5>
-          <input type="test" ref="description" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxtemp</h5>
-          <input type="text" ref="maxtemp" onKeyUp={this._handleTyping}/><br/>
-          <h5>Mintemp</h5>
-          <input type="text" ref="mintemp" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxph</h5>
-          <input type="text" ref="maxph" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minph</h5>
-          <input type="text" ref="minph" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxhum</h5>
-          <input type="text" ref="maxhum" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minhum</h5>
-          <input type="text" ref="minhum" onKeyUp={this._handleTyping}/><br/>
-          <h5>Maxlux</h5>
-          <input type="text" ref="maxlux" onKeyUp={this._handleTyping}/><br/>
-          <h5>Minlux</h5>
-          <input type="text" ref="minlux" onKeyUp={this._handleTyping}/><br/>
+          <input type="text"  placeholder="Nickname"  ref="nickname" onKeyUp={this._handleTyping}/><br/>
+          <input type="text"  placeholder="Name" ref="name" onKeyUp={this._handleTyping}/><br/>
+          <input type="test"  placeholder="Description" ref="description" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Maxtemp" ref="maxtemp" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Mintemp" ref="mintemp" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Maxph" ref="maxph" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Minph" ref="minph" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Maxhum" ref="maxhum" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Minhum" ref="minhum" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Maxlux" ref="maxlux" onKeyUp={this._handleTyping}/><br/>
+          <input type="text" placeholder="Minlux" ref="minlux" onKeyUp={this._handleTyping}/><br/>
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>
           </div>

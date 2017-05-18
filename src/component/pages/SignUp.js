@@ -42,12 +42,9 @@ export default class SignUp extends Component {
           <div className="sign__up">
             <div className="sign__up-content">
               <h1>Sign Up</h1>
-              <h5>Email</h5>
-              <input type="text" ref="email" onKeyUp={this._handleTyping}/><br/>
-              <h5>Password</h5>
-              <input type="password" ref="password" onKeyUp={this._handleTyping}/><br/>
-              <h5>Phone</h5>
-              <input type="text" ref="phone" onKeyUp={this._handleTyping}/><br/>
+              <input type="text" placeholder="Email" ref="email" onKeyUp={this._handleTyping}/><br/>
+              <input type="password" placeholder="Password" ref="password" onKeyUp={this._handleTyping}/><br/>
+              <input type="text" placeholder="Phone Number" ref="phone" onKeyUp={this._handleTyping}/><br/>
               <div className="sign__up-button">
                 <button onClick={this._handleSignup}>Sign Up</button>
               </div>
