@@ -1,4 +1,4 @@
-const enhanceWithClickOutside = require('react-click-outside');
+import onClickOutside from 'react-onclickoutside';
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 //import onClickOutside from 'react-onclickoutside';
@@ -9,13 +9,11 @@ import './Menu.css';
 class Menu extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      isOpened: false
-      }
+    this.state = {}
     }
 
-    _handleClickOutside = () => {
-    this.setState({ isOpened: true });
+    handleClickOutside = () => {
+      this.props.closeMenu();
     }
 
     render() {
@@ -38,4 +36,4 @@ class Menu extends Component {
 }
  // menu component
 
-module.exports = enhanceWithClickOutside(Menu);
+export default onClickOutside(Menu);

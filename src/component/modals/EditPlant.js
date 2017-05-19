@@ -49,8 +49,7 @@ export default class EditPlant extends Component {
         minhum: minhum,
         maxlux: maxlux,
         minlux: minlux
-      }).then(() => this.props.fetchPlants())
-      .catch(console.error)
+      }).catch(console.error)
     }
     this.props.closeModal()
   }
