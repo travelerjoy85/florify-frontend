@@ -27,7 +27,8 @@ export default class EditPlant extends Component {
      return this.props.params.id;
    }
 
-  _submitCard = () => {
+  _submitCard = (event) => {
+    event.preventDefault();
     let{
       nickname: {value: nickname},
       name: {value: name},
@@ -60,7 +61,7 @@ export default class EditPlant extends Component {
     //    })
     //  }
      if(event.keyCode === ENTER){
-       this._submitCard()
+       this._submitCard(event);
      }
    }
 

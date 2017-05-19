@@ -27,9 +27,11 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    console.log("componentmounting");
       this._fetchPlants()
+      console.log("api was called");
   }
-
+  
   _fetchPlants = () => {
       api.getPlants()
       .then(res => {
