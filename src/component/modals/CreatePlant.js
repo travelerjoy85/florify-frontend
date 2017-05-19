@@ -57,10 +57,10 @@ export default class CreatePlant extends Component {
      }
    }
 
-
   render(){
     return(
       <div className="create-plant-modal">
+          <span className="close" >×</span>
           <h1>Create Plant Card</h1>
           <input type="text" placeholder="Nickname" ref="nickname" onKeyUp={this._handleTyping}/><br/>
           <input type="text" placeholder="Name" ref="name" onKeyUp={this._handleTyping}/><br/>

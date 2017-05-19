@@ -86,6 +86,7 @@ export default class EditPlant extends Component {
     console.log(this.props, "this is to test if EditPlant form is rendered");
     return(
       <div className="edit-plant-modal">
+          <span className="close" >×</span>
           <h1>Edit Plant Card</h1>
           <input type="text" placeholder="Nicename" ref="nickname" onChange={this._handleTyping.bind(this, "nickname")} value={this.state.nickname}/><br/>
           <input type="text" placeholder="Name" ref="name" onChange={this._handleTyping.bind(this, "name")} value={this.state.name}/><br/>
