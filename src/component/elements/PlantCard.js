@@ -43,7 +43,7 @@ export default class PlantCard extends Component {
 
           <div className="card-edit">
             <button className="plant-edit-button" onClick={()=>this.setState({showEditModal: true})}>Edit</button>
-              
+
             <button className="plant-delete-button" onClick={this._handleDelete }>Delete</button>
 
           </div>

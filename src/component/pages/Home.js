@@ -63,10 +63,10 @@ export default class Home extends Component {
             )}
             <AddPlantCard showModal={this._toggleCreateModal} />
             {this.state.showCreateModal &&
-              <div className="backdrop">
-                  <CreatePlant closeModal={this._toggleCreateModal}/>
-              </div>
-            }
+          <div className="backdrop">
+              <CreatePlant closeModal={this._toggleCreateModal}/>
+          </div>
+          }
 
           </div>
       );
