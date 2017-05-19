@@ -34,6 +34,8 @@ class Api {
 
   // Return the latest basic info on all plantes, match with endpoints
   getPlants = (token) => {
+    console.log(token, "checking token");
+    console.log(localStorage.token, "check");
     return superagent
     .get(`${API_HOST}/plants`)
     .set('Authorization', `token ${localStorage.token}`)
@@ -50,7 +52,7 @@ class Api {
 
   // For loggedin user to delete plant card
   deletePlant = (id) => {
-    superagent
+    return superagent
     .delete(`${API_HOST}/plants/${id}`)
     .set('Authorization', `token ${localStorage.token}`)
     .then(res => console.log('successful delete'))

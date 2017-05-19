@@ -31,7 +31,7 @@ export default class Home extends Component {
   }
 
   _fetchPlants = () => {
-      api.getPlants()
+      api.getPlants(localStorage.token)
       .then(res => {
           console.log(res.body)
           this.setState({ plants: res.body })
@@ -47,6 +47,7 @@ export default class Home extends Component {
           <div className="home">
             { plants && plants.map(plant =>
               <PlantCard
+                fetchPlants={this._fetchPlants}
                 key={plant.id}
                 id={plant.id}
                 nickname={plant.nickname}
