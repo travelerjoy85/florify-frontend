@@ -50,7 +50,6 @@ class Api {
 
   // For loggedin user to delete plant card
   deletePlant = (id) => {
-    console.log("trying to delete", id);
     superagent
     .delete(`${API_HOST}/plants/${id}`)
     .set('Authorization', `token ${localStorage.token}`)
@@ -59,42 +58,41 @@ class Api {
   }
 
   // Get the loggedin user profile
-  getMe = (token) => {
-     return superagent
-     .get(`${API_HOST}/auth/me`)
-     .send({token})
-     .set('Authorization', `token ${token}`)
-     .set('Accept', 'application/json')
-     .then(profile => {
-       return JSON.parse(profile.text);
-     })
-   }
+  // getMe = (token) => {
+  //    return superagent
+  //    .get(`${API_HOST}/auth/me`)
+  //    .send({token})
+  //    .set('Authorization', `token ${token}`)
+  //    .set('Accept', 'application/json')
+  //    .then(profile => {
+  //      return JSON.parse(profile.text);
+  //    })
+  //  }
 
-  updatePlant = (plantData) => (
-    superagent
-    .patch(`${API_HOST}/plants/${plantData.id}`)
-    .send(plantData)
-    .set('Authorization', `token ${localStorage.token}`)
-    .catch(err => console.error(err))
+   updatePlant = (plantData) => (
+      superagent
+      .patch(`${API_HOST}/plants/${plantData.id}`)
+      .send(plantData)
+      .set('Authorization', `token ${localStorage.token}`)
+      .catch(err => console.error(err))
   )
 
   // For loggedin user to post a new plant card
   addPlant = (plant) => {
-    console.log(localStorage.token, "token~!!!!!");
-    return this.getMe(localStorage.token)
-    .then((profile) => {
-      return superagent
-      .post(`${API_HOST}/plants`)
-      .send({
-        // Match with the sql table
-        nickname: plant.nickname,
-        name: plant.name,
-        description: plant.description,
-      })
-      .set('Authorization', `token ${localStorage.token}`)
-      .set('Accept', 'application/json')
-    })
-  }
+    //  return this.getMe(localStorage.token)
+    //  .then((profile) => {
+       return superagent
+       .post(`${API_HOST}/plants`)
+       .send({
+         // Match with the sql table
+         nickname: plant.nickname,
+         name: plant.name,
+         description: plant.description,
+       })
+       .set('Authorization', `token ${localStorage.token}`)
+       .set('Accept', 'application/json')
+    //  })
+   }
 }
 
 export default new Api();
