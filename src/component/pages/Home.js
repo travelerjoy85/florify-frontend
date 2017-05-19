@@ -34,9 +34,8 @@ export default class Home extends Component {
       api.getPlants(localStorage.token)
       .then(res => {
           this.setState({ plants: res.body })
-            console.log(this.state)
       })
-      
+
       .catch(console.error)
   }
 
@@ -66,7 +65,7 @@ export default class Home extends Component {
             <AddPlantCard showModal={ this._toggleCreateModal } />
             {this.state.showCreateModal &&
           <div className="backdrop">
-              <CreatePlant closeModal={this._toggleCreateModal}/>
+              <CreatePlant fetchPlants={this._fetchPlants} closeModal={this._toggleCreateModal}/>
           </div>
           }
 

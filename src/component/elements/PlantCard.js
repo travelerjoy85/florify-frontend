@@ -49,7 +49,7 @@ export default class PlantCard extends Component {
             <button className="plant-delete-button" onClick={this._handleDelete }>Delete</button>
 
           </div>
-          {this.state.showEditModal ? <EditPlant plantData={this.props} closeModal={this._toggleEditModal}/> : null}
+          {this.state.showEditModal ? <EditPlant fetchPlants={this._fetchPlants} plantData={this.props} closeModal={this._toggleEditModal}/> : null}
 
         </div>
       );

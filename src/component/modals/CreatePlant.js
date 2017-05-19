@@ -35,13 +35,12 @@ export default class CreatePlant extends Component {
       description: {value: description}
     } = this.refs;
     if(nickname){
-      console.log("nickname", nickname)
       api.addPlant({
         nickname: nickname,
         name: name,
         description: description
       }).then(() => {
-        this.props._fetchPlantCard();
+        this.props.fetchPlants();
       })
       .catch(console.error)
     }
