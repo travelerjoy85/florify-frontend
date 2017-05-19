@@ -8,6 +8,7 @@ import CreatePlant from '../modals/CreatePlant';
 
 
 
+
 // This component is the INDEXROUTE "/"
 // it is responsible for fetching the plantsdata and map it to a
 // bunch of <PlantCard />'s.
@@ -31,7 +32,7 @@ export default class Home extends Component {
   }
 
   _fetchPlants = () => {
-      api.getPlants()
+      api.getPlants(localStorage.token)
       .then(res => {
           console.log(res.body)
           this.setState({ plants: res.body })
