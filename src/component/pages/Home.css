@@ -6,6 +6,7 @@
   top: 0;
 }
 
+/* Large */
 .home {
   display: flex;
   flex-flow: row wrap;
@@ -13,3 +14,20 @@
   background-color: #F8F8F8;
 }
 
+/* Medium screens */
+@media all and (max-width: 1366px) {
+  .home {
+    /* When on medium sized screens, we center it by evenly distributing empty space around items */
+    justify-content: space-around;
+    flex-flow: row wrap;
+  }
+}
+
+/* Small screens */
+@media all and (max-width: 400px) {
+  .home {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+    flex-flow: row wrap;
+  }
+}

@@ -16,14 +16,12 @@ export default class PlantCard extends Component {
 }
 
   _handleDelete = () => {
-    console.log(this.props.id, "_handleDelete!!!!!!!Test!!!!!!!1~~~~~~");
     api.deletePlant(this.props.id);
   }
 
   _toggleEditModal = () => this.setState({showEditModal: !this.state.showEditModaleModal})
 
   render() {
-    console.log("Is this rendered??????????");
     // const isLoggedIn = auth.isLoggedIn();
     let { nickname, name, description, id } = this.props
 
