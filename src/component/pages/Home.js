@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
 import AddPlantCard from '../elements/AddPlantCard';
-import auth from '../../auth';
+// import auth from '../../auth';
 import './Home.css';
 import CreatePlant from '../modals/CreatePlant';
 
