@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
 import AddPlantCard from '../elements/AddPlantCard';
-import auth from '../../auth';
+// import auth from '../../auth';
 import './Home.css';
 import CreatePlant from '../modals/CreatePlant';
 
@@ -63,10 +63,10 @@ export default class Home extends Component {
             )}
             <AddPlantCard showModal={this._toggleCreateModal} />
             {this.state.showCreateModal &&
-              <div className="backdrop">
-                  <CreatePlant closeModal={this._toggleCreateModal}/>
-              </div>
-            }
+          <div className="backdrop">
+              <CreatePlant closeModal={this._toggleCreateModal}/>
+          </div>
+          }
 
           </div>
       );

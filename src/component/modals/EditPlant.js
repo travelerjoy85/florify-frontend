@@ -86,29 +86,27 @@ export default class EditPlant extends Component {
     console.log(this.props, "this is to test if EditPlant form is rendered");
     return(
       <div className="edit-plant-modal">
+          <span className="close-icon" >×</span>
           <h1>Edit Plant Card</h1>
-          <h5>Nickname</h5>
-          <input type="text" ref="nickname" onChange={this._handleTyping.bind(this, "nickname")} value={this.state.nickname}/><br/>
-          <h5>Name</h5>
-          <input type="text" ref="name" onChange={this._handleTyping.bind(this, "name")} value={this.state.name}/><br/>
-          <h5>Description</h5>
-          <input type="test" ref="description" onChange={this._handleTyping.bind(this, "description")} value={this.state.description}/><br/>
-          <h5>Maxtemp</h5>
-          <input type="test" ref="maxtemp" onChange={this._handleTyping.bind(this, "maxtemp")} value={this.state.maxtemp}/><br/>
-          <h5>Mintemp</h5>
-          <input type="test" ref="mintemp" onChange={this._handleTyping.bind(this, "mintemp")} value={this.state.mintemp}/><br/>
-          <h5>Maxph</h5>
-          <input type="test" ref="maxph" onChange={this._handleTyping.bind(this, "maxph")} value={this.state.maxph}/><br/>
-          <h5>Minph</h5>
-          <input type="test" ref="minph" onChange={this._handleTyping.bind(this, "minph")} value={this.state.minph}/><br/>
-          <h5>Maxhum</h5>
-          <input type="test" ref="maxhum" onChange={this._handleTyping.bind(this, "maxhum")} value={this.state.maxhum}/><br/>
-          <h5>Minhum</h5>
-          <input type="test" ref="minhum" onChange={this._handleTyping.bind(this, "minhum")} value={this.state.minhum}/><br/>
-          <h5>Maxlux</h5>
-          <input type="test" ref="maxlux" onChange={this._handleTyping.bind(this, "maxlux")} value={this.state.maxlux}/><br/>
-          <h5>Minlux</h5>
-          <input type="test" ref="minlux" onChange={this._handleTyping.bind(this, "minlux")} value={this.state.minlux}/><br/>
+          <input type="text" placeholder="Nicename" ref="nickname" onChange={this._handleTyping.bind(this, "nickname")} value={this.state.nickname}/><br/>
+          <input type="text" placeholder="Name" ref="name" onChange={this._handleTyping.bind(this, "name")} value={this.state.name}/><br/>
+          <input type="test" placeholder="Description" ref="description" onChange={this._handleTyping.bind(this, "description")} value={this.state.description}/><br/>
+          {/*<h5>Maxtemp</h5>*/}
+          {/*<input type="test" placeholder="Maxtemp" ref="maxtemp" onChange={this._handleTyping.bind(this, "maxtemp")} value={this.state.maxtemp}/><br/>*/}
+          {/*<h5>Mintemp</h5>*/}
+          {/*<input type="test" placeholder="" ref="mintemp" onChange={this._handleTyping.bind(this, "mintemp")} value={this.state.mintemp}/><br/>*/}
+          {/*<h5>Maxph</h5>*/}
+          {/*<input type="test" ref="maxph" onChange={this._handleTyping.bind(this, "maxph")} value={this.state.maxph}/><br/>*/}
+          {/*<h5>Minph</h5>*/}
+          {/*<input type="test" ref="minph" onChange={this._handleTyping.bind(this, "minph")} value={this.state.minph}/><br/>*/}
+          {/*<h5>Maxhum</h5>*/}
+          {/*<input type="test" ref="maxhum" onChange={this._handleTyping.bind(this, "maxhum")} value={this.state.maxhum}/><br/>*/}
+          {/*<h5>Minhum</h5>*/}
+          {/*<input type="test" ref="minhum" onChange={this._handleTyping.bind(this, "minhum")} value={this.state.minhum}/><br/>*/}
+          {/*<h5>Maxlux</h5>*/}
+          {/*<input type="test" ref="maxlux" onChange={this._handleTyping.bind(this, "maxlux")} value={this.state.maxlux}/><br/>*/}
+          {/*<h5>Minlux</h5>*/}
+          {/*<input type="test" ref="minlux" onChange={this._handleTyping.bind(this, "minlux")} value={this.state.minlux}/><br/>*/}
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>
           </div>
