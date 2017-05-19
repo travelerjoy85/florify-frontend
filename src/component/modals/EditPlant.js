@@ -27,18 +27,35 @@ export default class EditPlant extends Component {
      return this.props.params.id;
    }
 
-  _submitCard = () => {
+  _submitCard = (event) => {
+    event.preventDefault();
     let{
       nickname: {value: nickname},
       name: {value: name},
-      description: {value: description}
+      description: {value: description},
+      maxtemp: {value: maxtemp},
+      mintemp: {value: mintemp},
+      maxph: {value: maxph},
+      minph: {value: minph},
+      maxhum: {value: maxhum},
+      minhum: {value: minhum},
+      maxlux: {value: maxlux},
+      minlux: {value: minlux}
     } = this.refs;
     if(nickname){
       api.updatePlant({
         id: this.state.id,
         nickname: nickname,
         name: name,
-        description: description
+        description: description,
+        maxtemp: maxtemp,
+        mintemp: mintemp,
+        maxph: maxph,
+        minph: minph,
+        maxhum: maxhum,
+        minhum: minhum,
+        maxlux: maxlux,
+        minlux: minlux
        }).catch(console.error)
     }
     this.props.closeModal()
@@ -46,8 +63,8 @@ export default class EditPlant extends Component {
 
 
    _handleTyping = (fieldName, event) => {
-     console.log(fieldName, "test!!!!");
-     console.log(event.target.value, "ssssss");
+     console.log(fieldName, "this is component EditPlant->_handleTyping");
+     console.log(event.target.value, "this is to test event.target.value in EditPlant component");
      if (fieldName === 'nickname') {
        this.setState({
          nickname:  event.target.value
@@ -60,13 +77,13 @@ export default class EditPlant extends Component {
     //    })
     //  }
      if(event.keyCode === ENTER){
-       this._submitCard()
+       this._submitCard(event);
      }
    }
 
 
   render(){
-    console.log(this.props, "EditPlant!!!!!!");
+    console.log(this.props, "this is to test if EditPlant form is rendered");
     return(
       <div className="edit-plant-modal">
           <h1>Edit Plant Card</h1>
