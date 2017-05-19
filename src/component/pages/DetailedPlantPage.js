@@ -2,27 +2,30 @@ import React, {Component} from 'react';
 import './DetailedPlantPage.css';
 import Chart from '../charts/Chart.js'
 import api from '../../api';
-import moment from 'moment'
-
-const HUMIDITY = 'hum'
-const TEMPERATURE = 'temp'
-const LUX = 'lux'
-const FERTILITY = 'ph'
-
-const humidityColor1 = 'rgba(50,50,200, 0.4)'
-const humidityColor2 = 'rgba(50,50,200, 1)'
-const temperatureColor1 = 'rgba(200,50,50, 0.4)'
-const temperatureColor2 = 'rgba(200,50,50, 1)'
-const luxColor1 = 'rgba(50,50,200, 0.4)'
-const luxColor2 = 'rgba(50,50,200, 1)'
-const fertilityColor1 = 'rgba(50,50,200, 0.4)'
-const fertilityColor2 = 'rgba(50,50,200, 1)'
+import FontAwesome from 'react-fontawesome';
+import moment from 'moment';
+import * as util from '../../util';
 
 
 export default class DetailedPlantPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      period: "hour",
+      [util.HUMIDITY]: false,
+      [util.TEMPERATURE]: false,
+      [util.LUX]: false,
+      [util.FERTILITY]: false,
+      nickname: '',
+      name: '',
+      description: '',
+      data: '',
+      currentHum: '',
+      currentTemp: '',
+      currentLux: '',
+      currentFertility: '',
+      loading: true
+    };
   }
 
   componentDidMount() {
@@ -33,124 +36,136 @@ export default class DetailedPlantPage extends Component {
     // to get the datasets you want.
 
     // setState with the result of this process     SHOULD LOOK SOMETHING LIKE::
-    //  data: {
-    //   labels: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00'],
-    //   datasets: [
-    //     {
-    //       fill: false,
-    //       lineTension: 0.1,
-    //       backgroundColor: humidityColor1,
-    //       borderColor: humidityColor2,
-    //       data: dataArray
-    //     }
-    //   ]
-    // }
-    //  GJ
+
     this._fetchPlantCard()
 
   }
 
-
   _fetchPlantCard = () => {
-      api.getPlantDetail(this.props.params.id)
+      api.getPlantDetail(this.props.params.id, this.state.period)
       .then(res => {
-        let datum = res.body.readings
 
-        let currentHum = datum.hum[datum.hum.length-1].reading
-        let currentTemp = datum.temp[datum.temp.length-1].reading
-        let currentLux = datum.lux[datum.lux.length-1].reading
-        let currentFertility = datum.ph[datum.ph.length-1].reading
+        let datum = res.body
+        // left hand side stuff
+        let nickname = (res.body.plant.nickname)
+        let name = (res.body.plant.name)
+        let description = (res.body.plant.description)
+        let currentHum = datum.hum[datum.hum.length-1]
+        let currentTemp = datum.temp[datum.temp.length-1]
+        let currentLux = datum.lux[datum.lux.length-1]
+        let currentFertility = datum.ph[datum.ph.length-1]
+        // datasets
+        let humDataSet = util.dataSetFactory(util.HUMIDITY, datum.hum)
+        let tempDataSet = util.dataSetFactory(util.TEMPERATURE, datum.temp)
+        let luxDataSet = util.dataSetFactory(util.LUX, datum.lux)
+        let fertilityDataSet = util.dataSetFactory(util.FERTILITY, datum.ph)
+        // Labels for x axis
+        let labels = res.body.timeAxis.map(el => moment(el).format('h:mm'))
 
-        let humDataSet = this._dataSetFactory(HUMIDITY, datum.hum)
-        let tempDataSet = this._dataSetFactory(TEMPERATURE, datum.temp)
-        let luxDataSet = this._dataSetFactory(LUX, datum.lux)
-        let fertilityDataSet = this._dataSetFactory(FERTILITY, datum.ph)
-
-        let humlabels = datum.hum.map(el => moment(el.createdAt).format('h:mm:ss'))
-        let templabels = datum.temp.map(el => moment(el.createdAt).format('h:mm:ss'))
-        let luxlabels = datum.lux.map(el => moment(el.createdAt).format('h:mm:ss'))
-        let fertilitylabels = datum.ph.map(el => moment(el.createdAt).format('h:mm:ss'))
-
-        this.setState({ data: {
-          labels: humlabels,
-          datasets: [humDataSet, fertilityDataSet, tempDataSet, luxDataSet]
-        },
-          nickname: res.body.nickname,
-          description: res.body.description,
-          currentHum: currentHum,
-          currentTemp: currentTemp,
-          currentLux: currentLux,
-          currentFertility: currentFertility
+        this.setState({
+          // Set corresponding state
+          [util.HUMIDITY]: true,
+          [util.TEMPERATURE]: true,
+          [util.LUX]: true,
+          [util.FERTILITY]: false,
+          
+          // stored computed data
+          labels,
+          humDataSet,
+          tempDataSet,
+          luxDataSet,
+          fertilityDataSet,
+          
+          //trash for the left side
+          nickname: nickname,
+          name: name,
+          description: description,
+          currentHum: Math.round(currentHum),
+          currentTemp: Math.round(currentTemp),
+          currentLux: Math.round(currentLux),
+          currentFertility: Math.round(currentFertility),
+          loading: false
          })
       })
       .catch(console.error)
   }
+  
+  _toggleDataSet = (type) => this.setState({ [type]: !this.state[type] })
 
-  _dataSetFactory = (type, dataArray) => {
-    if (type === HUMIDITY) {
-      return {
-        label: 'humidity',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: humidityColor1,
-        borderColor: humidityColor2,
-        data: dataArray.map(el => el.reading)
-      }
-    }
-    if (type === TEMPERATURE) {
-      return {
-        label: 'temperature',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: temperatureColor1,
-        borderColor: temperatureColor2,
-        data: dataArray.map(el => el.reading)
-      }
-    }
-    if (type === LUX) {
-      return {
-        label: 'Light',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: luxColor1,
-        borderColor: luxColor2,
-        data: dataArray.map(el => el.reading)
-      }
-    }
-    if (type === FERTILITY) {
-      return {
-        label: 'pH',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: fertilityColor1,
-        borderColor: fertilityColor2,
-        data: dataArray.map(el => el.reading)
-      }
-    }
-  }
+  // _chartDataGenerator = () =>
 
   render() { // render chart
-
-     let { nickname, name, description, data, currentHum, currentTemp, currentLux, currentFertility } = this.state
+    // console.log(this.state)
+    let { nickname, name, description, currentHum,
+       currentTemp, currentLux, currentFertility } = this.state
+  
+    let chartStuff = this._getDataAndOptions()
+    
 
     return(
       <div className='DetailedPlantPage'>
         <div className='DetailedPlantPage-content'>
           <div className='DetailedPlantPage-info'>
-            <h2>{ nickname }</h2>
+            <h1>{ nickname }</h1>
+            <h4>{ name } </h4>
             <h4>{ description }</h4>
-            <p>{ currentHum } </p>
-            <p>{ currentTemp } </p>
-            <p>{ currentLux } </p>
-            <p>{ currentFertility } </p>
+            <div className='DetailedPlantPage-info-box'
+              onClick={()=>this._toggleDataSet(util.HUMIDITY)}
+            >
+              <FontAwesome className='hum-icon' name='tint' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+              <p>{ currentHum } %</p>
+            </div>
+            <div className='DetailedPlantPage-info-box'
+              onClick={()=>this._toggleDataSet(util.TEMPERATURE)}
+            >
+              <FontAwesome className='temp-icon' name='thermometer-three-quarters' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+              <p>{ currentTemp } &deg;C</p>
+            </div>
+            <div className='DetailedPlantPage-info-box'
+              onClick={()=>this._toggleDataSet(util.LUX)}
+            >
+              <FontAwesome className='lux-icon' name='sun-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+              <p>{ currentLux }lux</p>
+            </div>
+            <div className='DetailedPlantPage-info-box'
+              onClick={()=>this._toggleDataSet(util.FERTILITY)}
+            >
+              <FontAwesome className='fertility-icon' name='flask' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+              <p>{ currentFertility } f* </p>
+            </div>
           </div>
           <div className='DetailedPlantPage-chart'>
-            { data &&
-              <Chart data={ data }/>
+            { !this.state.loading &&
+              <Chart data={ chartStuff.data } options={ chartStuff.options }/>
             }
           </div>
         </div>
       </div>
     );
+  }
+  
+  _getDataAndOptions = () => {
+    // Determine what goes into our options and datasets based on state.
+    let data = { labels: this.state.labels, datasets: [] }
+    let activeOptions = [];
+    if (this.state[util.HUMIDITY]) {
+      activeOptions.push(util.HUMIDITY);
+      data.datasets.push(this.state.humDataSet)
+    }
+    if (this.state[util.TEMPERATURE]) {
+      activeOptions.push(util.TEMPERATURE)
+      data.datasets.push(this.state.tempDataSet)
+    }
+    if (this.state[util.LUX]) {
+      activeOptions.push(util.LUX)
+      data.datasets.push(this.state.luxDataSet)
+    }
+    if (this.state[util.FERTILITY]) {
+      activeOptions.push(util.FERTILITY)
+      data.datasets.push(this.state.fertilityDataSet)
+    }
+    let options = util.optionsFactory(activeOptions)
+    // console.log(activeOptions, data.datasets)
+    return { options, data }
   }
 }

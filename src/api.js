@@ -37,14 +37,15 @@ class Api {
     return superagent
     .get(`${API_HOST}/plants`)
     .set('Authorization', `token ${localStorage.token}`)
-    .set('Content-Type', 'application/json')
+
   }
 
   // Return single plant card with 4 charts on the page, waiting for endpoints
   // id here is plant ID, not userId, figure out a way to access plantId
-  getPlantDetail = (id) => {
+  // Can request a period of either "hour", "day", "week"
+  getPlantDetail = (id, period) => {
     return superagent
-    .get(`${API_HOST}/plants/${id}`)
+    .get(`${API_HOST}/plants/${id}/${period}`)
     .set('Authorization', `token ${localStorage.token}`)
   }
 
