@@ -16,7 +16,8 @@ export default class PlantCard extends Component {
 }
 
   _handleDelete = () => {
-    api.deletePlant(this.props.id);
+    api.deletePlant(this.props.id)
+    .then(() => this.props.fetchPlants())
   }
 
   _toggleEditModal = () => this.setState({showEditModal: !this.state.showEditModaleModal})

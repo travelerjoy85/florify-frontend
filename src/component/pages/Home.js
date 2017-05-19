@@ -8,7 +8,6 @@ import CreatePlant from '../modals/CreatePlant';
 
 
 
-
 // This component is the INDEXROUTE "/"
 // it is responsible for fetching the plantsdata and map it to a
 // bunch of <PlantCard />'s.
@@ -48,6 +47,7 @@ export default class Home extends Component {
           <div className="home">
             { plants && plants.map(plant =>
               <PlantCard
+                fetchPlants={this._fetchPlants}
                 key={plant.id}
                 id={plant.id}
                 nickname={plant.nickname}
