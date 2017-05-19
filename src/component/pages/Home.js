@@ -31,9 +31,10 @@ export default class Home extends Component {
   }
 
   _fetchPlants = () => {
+    console.log("Does fetch plants work?", localStorage.token);
       api.getPlants(localStorage.token)
       .then(res => {
-          console.log(res.body)
+          console.log(res.body, "res.body is valid?");
           this.setState({ plants: res.body })
       })
       .catch(console.error)
@@ -65,7 +66,7 @@ export default class Home extends Component {
             <AddPlantCard showModal={this._toggleCreateModal} />
             {this.state.showCreateModal &&
           <div className="backdrop">
-              <CreatePlant closeModal={this._toggleCreateModal}/>
+              <CreatePlant fetchPlants={this._fetchPlants} closeModal={this._toggleCreateModal}/>
           </div>
           }
 
