@@ -33,14 +33,13 @@ export default class Home extends Component {
   _fetchPlants = () => {
       api.getPlants(localStorage.token)
       .then(res => {
-          console.log(res.body)
           this.setState({ plants: res.body })
       })
+
       .catch(console.error)
   }
 
   _toggleCreateModal = () => this.setState({showCreateModal: !this.state.showCreateModal})
-
   render() {
       let { plants } = this.state
       return (
@@ -62,10 +61,11 @@ export default class Home extends Component {
                 updatedAt={plant.updatedAt}
               />
             )}
-            <AddPlantCard showModal={this._toggleCreateModal} />
+
+            <AddPlantCard showModal={ this._toggleCreateModal } />
             {this.state.showCreateModal &&
           <div className="backdrop">
-              <CreatePlant closeModal={this._toggleCreateModal}/>
+              <CreatePlant fetchPlants={this._fetchPlants} closeModal={this._toggleCreateModal}/>
           </div>
           }
 
