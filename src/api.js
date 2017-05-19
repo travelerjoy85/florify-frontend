@@ -37,7 +37,7 @@ class Api {
     return superagent
     .get(`${API_HOST}/plants`)
     .set('Authorization', `token ${localStorage.token}`)
-    .set('Content-Type', 'application/json')
+
   }
 
   // Return single plant card with 4 charts on the page, waiting for endpoints
@@ -51,7 +51,7 @@ class Api {
 
   // For loggedin user to delete plant card
   deletePlant = (id) => {
-    superagent
+    return superagent
     .delete(`${API_HOST}/plants/${id}`)
     .set('Authorization', `token ${localStorage.token}`)
     .then(res => console.log('successful delete'))

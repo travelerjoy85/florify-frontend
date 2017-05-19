@@ -14,7 +14,7 @@ export default class Chart extends Component {
         <Line
           data={this.props.data}
 	         width={400}
-	         height={500}
+	         height={400}
 	         options={this.props.options}
           />
       </div>

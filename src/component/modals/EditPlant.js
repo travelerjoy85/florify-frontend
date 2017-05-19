@@ -29,19 +29,12 @@ export default class EditPlant extends Component {
 
   _submitCard = (event) => {
     event.preventDefault();
-    let{
-      nickname: {value: nickname},
-      name: {value: name},
-      description: {value: description},
-      maxtemp: {value: maxtemp},
-      mintemp: {value: mintemp},
-      maxph: {value: maxph},
-      minph: {value: minph},
-      maxhum: {value: maxhum},
-      minhum: {value: minhum},
-      maxlux: {value: maxlux},
-      minlux: {value: minlux}
-    } = this.refs;
+
+    let {
+      name, nickname, description, maxtemp, mintemp, maxph, minph, maxhum,
+      minhum, maxlux, minlux
+    } = this.state;
+
     if(nickname){
       api.updatePlant({
         id: this.state.id,
@@ -61,54 +54,34 @@ export default class EditPlant extends Component {
     this.props.closeModal()
   }
 
-
-   _handleTyping = (fieldName, event) => {
-     console.log(fieldName, "this is component EditPlant->_handleTyping");
-     console.log(event.target.value, "this is to test event.target.value in EditPlant component");
-     if (fieldName === 'nickname') {
-       this.setState({
-         nickname:  event.target.value
-       })
-     }
-    //  if(this.state && this.state.error){
-    //    this.setState({
-    //     //  error: null,
-    //      nickname:
-    //    })
-    //  }
-     if(event.keyCode === ENTER){
-       this._submitCard(event);
-     }
-   }
-
-
   render(){
     console.log(this.props, "this is to test if EditPlant form is rendered");
     return(
       <div className="edit-plant-modal">
+          <span className="close-icon" >×</span>
           <h1>Edit Plant Card</h1>
-          <h5>Nickname</h5>
-          <input type="text" ref="nickname" onChange={this._handleTyping.bind(this, "nickname")} value={this.state.nickname}/><br/>
-          <h5>Name</h5>
-          <input type="text" ref="name" onChange={this._handleTyping.bind(this, "name")} value={this.state.name}/><br/>
-          <h5>Description</h5>
-          <input type="test" ref="description" onChange={this._handleTyping.bind(this, "description")} value={this.state.description}/><br/>
-          <h5>Maxtemp</h5>
-          <input type="test" ref="maxtemp" onChange={this._handleTyping.bind(this, "maxtemp")} value={this.state.maxtemp}/><br/>
-          <h5>Mintemp</h5>
-          <input type="test" ref="mintemp" onChange={this._handleTyping.bind(this, "mintemp")} value={this.state.mintemp}/><br/>
-          <h5>Maxph</h5>
-          <input type="test" ref="maxph" onChange={this._handleTyping.bind(this, "maxph")} value={this.state.maxph}/><br/>
-          <h5>Minph</h5>
-          <input type="test" ref="minph" onChange={this._handleTyping.bind(this, "minph")} value={this.state.minph}/><br/>
-          <h5>Maxhum</h5>
-          <input type="test" ref="maxhum" onChange={this._handleTyping.bind(this, "maxhum")} value={this.state.maxhum}/><br/>
-          <h5>Minhum</h5>
-          <input type="test" ref="minhum" onChange={this._handleTyping.bind(this, "minhum")} value={this.state.minhum}/><br/>
-          <h5>Maxlux</h5>
-          <input type="test" ref="maxlux" onChange={this._handleTyping.bind(this, "maxlux")} value={this.state.maxlux}/><br/>
-          <h5>Minlux</h5>
-          <input type="test" ref="minlux" onChange={this._handleTyping.bind(this, "minlux")} value={this.state.minlux}/><br/>
+          <input type="text" placeholder="Nicename" value={this.state.nickname}
+            onChange={({target})=>this.setState({nickname:target.value})}/>
+          <input type="text" placeholder="Name" value={this.state.name}
+            onChange={({target})=>this.setState({name:target.value})}/>
+          <input type="test" placeholder="Description" value={this.state.description}
+            onChange={({target})=>this.setState({description:target.value})}/>
+          <input type="test" placeholder="Maxtemp" value={this.state.maxtemp}
+            onChange={({target})=>this.setState({maxtemp:target.value})}/>
+          <input type="test" placeholder="Mintemp" value={this.state.mintemp}
+            onChange={({target})=>this.setState({mintemp:target.value})}/>
+          <input type="test" placeholder="Maxph" value={this.state.maxph}
+            onChange={({target})=>this.setState({maxph:target.value})}/>
+          <input type="test" placeholder="Minph" value={this.state.minph}
+            onChange={({target})=>this.setState({minph:target.value})}/>
+\          <input type="test" placeholder="Maxhum" value={this.state.maxhum}
+            onChange={({target})=>this.setState({maxhum:target.value})}/>
+          <input type="test" placeholder="Minhum" value={this.state.minhum}
+            onChange={({target})=>this.setState({minhum:target.value})}/>
+          <input type="test" placeholder="Maxlux" value={this.state.maxlux}
+            onChange={({target})=>this.setState({maxlux:target.value})}/>
+          <input type="test" placeholder="Minlux" value={this.state.minlux}
+            onChange={({target})=>this.setState({minlux:target.value})}/>
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>
           </div>

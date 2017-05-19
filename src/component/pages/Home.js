@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import api from '../../api';
 import PlantCard from '../elements/PlantCard';
 import AddPlantCard from '../elements/AddPlantCard';
-import auth from '../../auth';
+// import auth from '../../auth';
 import './Home.css';
 import CreatePlant from '../modals/CreatePlant';
 
@@ -31,22 +31,23 @@ export default class Home extends Component {
   }
 
   _fetchPlants = () => {
-      api.getPlants()
+      api.getPlants(localStorage.token)
       .then(res => {
-          // console.log(res.body)
           this.setState({ plants: res.body })
+            console.log(this.state)
       })
+      
       .catch(console.error)
   }
 
   _toggleCreateModal = () => this.setState({showCreateModal: !this.state.showCreateModal})
-
   render() {
       let { plants } = this.state
       return (
           <div className="home">
             { plants && plants.map(plant =>
               <PlantCard
+                fetchPlants={this._fetchPlants}
                 key={plant.id}
                 id={plant.id}
                 nickname={plant.nickname}
@@ -64,10 +65,10 @@ export default class Home extends Component {
 
             <AddPlantCard showModal={ this._toggleCreateModal } />
             {this.state.showCreateModal &&
-              <div className="backdrop">
-                  <CreatePlant closeModal={this._toggleCreateModal}/>
-              </div>
-            }
+          <div className="backdrop">
+              <CreatePlant closeModal={this._toggleCreateModal}/>
+          </div>
+          }
 
           </div>
       );

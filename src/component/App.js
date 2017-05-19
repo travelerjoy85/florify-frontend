@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Menu from './modals/Menu';
 import './App.css';
 
 // TODO: Import menu back and render it...

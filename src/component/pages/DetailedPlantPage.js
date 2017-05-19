@@ -44,10 +44,10 @@ export default class DetailedPlantPage extends Component {
       api.getPlantDetail(this.props.params.id, this.state.period)
       .then(res => {
         let datum = res.body
-
-        let nickname = (res.body.nickname)
-        let name = (res.body.name)
-        let description = (res.body.description)
+        // console.log(res.body)
+        let nickname = (res.body.plant.nickname)
+        let name = (res.body.plant.name)
+        let description = (res.body.plant.description)
 
         let currentHum = datum.hum[datum.hum.length-1]
         let currentTemp = datum.temp[datum.temp.length-1]
@@ -59,18 +59,18 @@ export default class DetailedPlantPage extends Component {
         let luxDataSet = util.dataSetFactory(util.LUX, datum.lux)
         let fertilityDataSet = util.dataSetFactory(util.FERTILITY, datum.ph)
 
-        let humlabels = res.body.timeAxis.map(el => moment(el).format('h:mm'))
+        let labels = res.body.timeAxis.map(el => moment(el).format('h:mm'))
 
         let options = util.optionsFactory(
-          [util.HUMIDITY] //, util.TEMPERATURE, util.FERTILITY, util.LUX]
+          [util.HUIDITY] //, util.TEMPERATURE, util.FERTILITY, util.LUX]
         )
 
-        console.log(humDataSet)
+        // console.log(humDataSet)
         console.log(options)
 
         this.setState({
           data: {
-            labels: humlabels,
+            labels: labels,
             datasets: [humDataSet] //, tempDataSet, luxDataSet, fertilityDataSet]
           },
           option: options,
