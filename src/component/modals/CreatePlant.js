@@ -57,14 +57,12 @@ export default class CreatePlant extends Component {
      }
     }
 
-
-
   render(){
     return(
       <div className="create-plant-modal">
 
           {/*closing button*/}
-          <span className="close-icon"><a hruf="/">×</a></span>
+          <span className="close-icon" >×</span>
 
           <h1>Create Plant Card</h1>
           <input type="text" placeholder="Nickname" ref="nickname" onKeyUp={this._handleTyping}/><br/>
