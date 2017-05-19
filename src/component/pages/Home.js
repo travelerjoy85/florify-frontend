@@ -33,7 +33,7 @@ export default class Home extends Component {
   _fetchPlants = () => {
       api.getPlants()
       .then(res => {
-          console.log(res.body)
+          // console.log(res.body)
           this.setState({ plants: res.body })
       })
       .catch(console.error)
