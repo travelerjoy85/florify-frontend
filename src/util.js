@@ -39,7 +39,7 @@ export const dataSetFactory = (type, dataArray) => {
   if (type === HUMIDITY) {
     return {
       label: 'humidity',
-      fill: true,
+      fill: false,
       lineTension: 0.3,
       backgroundColor: humidityColor1,
       borderColor: humidityColor2,

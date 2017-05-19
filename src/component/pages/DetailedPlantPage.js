@@ -64,7 +64,7 @@ export default class DetailedPlantPage extends Component {
         this.setState({
           // Set corresponding state
           [util.HUMIDITY]: true,
-          [util.TEMPERATURE]: false,
+          [util.TEMPERATURE]: true,
           [util.LUX]: true,
           [util.FERTILITY]: false,
           

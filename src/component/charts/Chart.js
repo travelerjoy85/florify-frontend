@@ -9,10 +9,10 @@ const luxColor2 = 'rgba(166, 113, 15, 1)'
 
 export default class Chart extends Component {
   render() {
-    // console.log(this.props)
     return (
       <div style={{maxHeight: '400px'}}>
         <Line
+          redraw
           data={this.props.data}
           width={400}
           height={400}
