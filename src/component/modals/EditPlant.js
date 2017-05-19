@@ -58,39 +58,29 @@ export default class EditPlant extends Component {
     console.log(this.props, "this is to test if EditPlant form is rendered");
     return(
       <div className="edit-plant-modal">
+          <span className="close-icon" >×</span>
           <h1>Edit Plant Card</h1>
-          <h5>Nickname</h5>
-          <input type="text" value={this.state.nickname}
+          <input type="text" placeholder="Nicename" value={this.state.nickname}
             onChange={({target})=>this.setState({nickname:target.value})}/>
-          <h5>Name</h5>
-          <input type="text" value={this.state.name}
+          <input type="text" placeholder="Name" value={this.state.name}
             onChange={({target})=>this.setState({name:target.value})}/>
-          <h5>Description</h5>
-          <input type="test" value={this.state.description}
+          <input type="test" placeholder="Description" value={this.state.description}
             onChange={({target})=>this.setState({description:target.value})}/>
-          <h5>Maxtemp</h5>
-          <input type="test" value={this.state.maxtemp}
+          <input type="test" placeholder="Maxtemp" value={this.state.maxtemp}
             onChange={({target})=>this.setState({maxtemp:target.value})}/>
-          <h5>Mintemp</h5>
-          <input type="test" value={this.state.mintemp}
+          <input type="test" placeholder="Mintemp" value={this.state.mintemp}
             onChange={({target})=>this.setState({mintemp:target.value})}/>
-          <h5>Maxph</h5>
-          <input type="test" value={this.state.maxph}
+          <input type="test" placeholder="Maxph" value={this.state.maxph}
             onChange={({target})=>this.setState({maxph:target.value})}/>
-          <h5>Minph</h5>
-          <input type="test" value={this.state.minph}
+          <input type="test" placeholder="Minph" value={this.state.minph}
             onChange={({target})=>this.setState({minph:target.value})}/>
-          <h5>Maxhum</h5>
-          <input type="test" value={this.state.maxhum}
+\          <input type="test" placeholder="Maxhum" value={this.state.maxhum}
             onChange={({target})=>this.setState({maxhum:target.value})}/>
-          <h5>Minhum</h5>
-          <input type="test" value={this.state.minhum}
+          <input type="test" placeholder="Minhum" value={this.state.minhum}
             onChange={({target})=>this.setState({minhum:target.value})}/>
-          <h5>Maxlux</h5>
-          <input type="test" value={this.state.maxlux}
+          <input type="test" placeholder="Maxlux" value={this.state.maxlux}
             onChange={({target})=>this.setState({maxlux:target.value})}/>
-          <h5>Minlux</h5>
-          <input type="test" value={this.state.minlux}
+          <input type="test" placeholder="Minlux" value={this.state.minlux}
             onChange={({target})=>this.setState({minlux:target.value})}/>
           <div className="create__card-button">
             <button onClick={this._submitCard}>Submit Plant</button>

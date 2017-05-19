@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 import './PlantCard.css';
-//import auth from '../../auth';
+// import auth from '../../auth';
 import api from '../../api';
-import {browserHistory} from 'react-router';
+// import {browserHistory} from 'react-router';
 import EditPlant from '../modals/EditPlant';
 
 export default class PlantCard extends Component {
@@ -44,6 +44,7 @@ export default class PlantCard extends Component {
 
           <div className="card-edit">
             <button className="plant-edit-button" onClick={()=>this.setState({showEditModal: true})}>Edit</button>
+
             <button className="plant-delete-button" onClick={this._handleDelete }>Delete</button>
 
           </div>

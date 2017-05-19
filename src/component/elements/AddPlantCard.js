@@ -11,7 +11,7 @@ export default class AddPlantCard extends Component {
   render() {
     let { nickname, name, description, id, showModal } = this.props
     return (
-      <div className="plant-card" onClick={showModal}>
+      <div className="add-plant-card" onClick={showModal}>
         <h2> Add a plant </h2>
       </div>
     );
