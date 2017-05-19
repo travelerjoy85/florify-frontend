@@ -31,10 +31,8 @@ export default class Home extends Component {
   }
 
   _fetchPlants = () => {
-    console.log("Does fetch plants work?", localStorage.token);
       api.getPlants(localStorage.token)
       .then(res => {
-          console.log(res.body, "res.body is valid?");
           this.setState({ plants: res.body })
       })
       .catch(console.error)

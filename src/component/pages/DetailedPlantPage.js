@@ -70,7 +70,6 @@ export default class DetailedPlantPage extends Component {
         let templabels = datum.temp.map(el => moment(el.createdAt).format('h:mm:ss'))
         let luxlabels = datum.lux.map(el => moment(el.createdAt).format('h:mm:ss'))
         let fertilitylabels = datum.ph.map(el => moment(el.createdAt).format('h:mm:ss'))
-        console.log(currentTemp)
 
         this.setState({ data: {
           labels: humlabels,
@@ -131,7 +130,7 @@ export default class DetailedPlantPage extends Component {
   }
 
   render() { // render chart
-    
+
      let { nickname, name, description, data, currentHum, currentTemp, currentLux, currentFertility } = this.state
 
     return(

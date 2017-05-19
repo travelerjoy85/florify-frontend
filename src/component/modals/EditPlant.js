@@ -56,7 +56,6 @@ export default class EditPlant extends Component {
   }
 
   render(){
-    console.log(this.props, "this is to test if EditPlant form is rendered");
     return(
       <div className="edit-plant-modal">
           <span className="close-icon" >×</span>
