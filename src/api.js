@@ -42,9 +42,9 @@ class Api {
 
   // Return single plant card with 4 charts on the page, waiting for endpoints
   // id here is plant ID, not userId, figure out a way to access plantId
-  getPlantDetail = (id) => {
+  getPlantDetail = (id, type, time) => {
     return superagent
-    .get(`${API_HOST}/plants/${id}`)
+    .get(`${API_HOST}/plants/${id}/hour`)
     .set('Authorization', `token ${localStorage.token}`)
   }
 

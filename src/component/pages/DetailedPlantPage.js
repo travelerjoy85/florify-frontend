@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './DetailedPlantPage.css';
 import Chart from '../charts/Chart.js'
 import api from '../../api';
-import moment from 'moment'
+import FontAwesome from 'react-fontawesome';
 
 const HUMIDITY = 'hum'
 const TEMPERATURE = 'temp'
@@ -33,55 +33,44 @@ export default class DetailedPlantPage extends Component {
     // to get the datasets you want.
 
     // setState with the result of this process     SHOULD LOOK SOMETHING LIKE::
-    //  data: {
-    //   labels: ['1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00'],
-    //   datasets: [
-    //     {
-    //       fill: false,
-    //       lineTension: 0.1,
-    //       backgroundColor: humidityColor1,
-    //       borderColor: humidityColor2,
-    //       data: dataArray
-    //     }
-    //   ]
-    // }
-    //  GJ
+
     this._fetchPlantCard()
 
   }
 
 
   _fetchPlantCard = () => {
-      api.getPlantDetail(this.props.params.id)
+      api.getPlantDetail(this.props.params.id, this.props.time)
       .then(res => {
-        let datum = res.body.readings
+        let datum = res.body
 
-        let currentHum = datum.hum[datum.hum.length-1].reading
-        let currentTemp = datum.temp[datum.temp.length-1].reading
-        let currentLux = datum.lux[datum.lux.length-1].reading
-        let currentFertility = datum.ph[datum.ph.length-1].reading
+        let currentHum = datum.hum[datum.hum.length-1]
+        let currentTemp = datum.temp[datum.temp.length-1]
+        let currentLux = datum.lux[datum.lux.length-1]
+        let currentFertility = datum.ph[datum.ph.length-1]
 
         let humDataSet = this._dataSetFactory(HUMIDITY, datum.hum)
         let tempDataSet = this._dataSetFactory(TEMPERATURE, datum.temp)
         let luxDataSet = this._dataSetFactory(LUX, datum.lux)
         let fertilityDataSet = this._dataSetFactory(FERTILITY, datum.ph)
-
-        let humlabels = datum.hum.map(el => moment(el.createdAt).format('h:mm:ss'))
-        let templabels = datum.temp.map(el => moment(el.createdAt).format('h:mm:ss'))
-        let luxlabels = datum.lux.map(el => moment(el.createdAt).format('h:mm:ss'))
-        let fertilitylabels = datum.ph.map(el => moment(el.createdAt).format('h:mm:ss'))
-        console.log(currentTemp)
+        //
+        // let humlabels = datum.hum.map(el => moment(el.createdAt).format('h:mm:ss'))
+        // let templabels = datum.temp.map(el => moment(el.createdAt).format('h:mm:ss'))
+        // let luxlabels = datum.lux.map(el => moment(el.createdAt).format('h:mm:ss'))
+        // let fertilitylabels = datum.ph.map(el => moment(el.createdAt).format('h:mm:ss'))
+        // // console.log(res.body)
 
         this.setState({ data: {
-          labels: humlabels,
+          labels: res.body.timeAxis,
           datasets: [humDataSet, fertilityDataSet, tempDataSet, luxDataSet]
         },
           nickname: res.body.nickname,
+          name: res.body.name,
           description: res.body.description,
-          currentHum: currentHum,
-          currentTemp: currentTemp,
-          currentLux: currentLux,
-          currentFertility: currentFertility
+          currentHum: Math.round(currentHum),
+          currentTemp: Math.round(currentTemp),
+          currentLux: Math.round(currentLux),
+          currentFertility: Math.round(currentFertility)
          })
       })
       .catch(console.error)
@@ -95,7 +84,7 @@ export default class DetailedPlantPage extends Component {
         lineTension: 0.3,
         backgroundColor: humidityColor1,
         borderColor: humidityColor2,
-        data: dataArray.map(el => el.reading)
+        data: dataArray.map(el => el)
       }
     }
     if (type === TEMPERATURE) {
@@ -105,7 +94,7 @@ export default class DetailedPlantPage extends Component {
         lineTension: 0.3,
         backgroundColor: temperatureColor1,
         borderColor: temperatureColor2,
-        data: dataArray.map(el => el.reading)
+        data: dataArray.map(el => el)
       }
     }
     if (type === LUX) {
@@ -115,7 +104,7 @@ export default class DetailedPlantPage extends Component {
         lineTension: 0.3,
         backgroundColor: luxColor1,
         borderColor: luxColor2,
-        data: dataArray.map(el => el.reading)
+        data: dataArray.map(el => el)
       }
     }
     if (type === FERTILITY) {
@@ -125,25 +114,39 @@ export default class DetailedPlantPage extends Component {
         lineTension: 0.3,
         backgroundColor: fertilityColor1,
         borderColor: fertilityColor2,
-        data: dataArray.map(el => el.reading)
+        data: dataArray.map(el => el)
       }
     }
   }
 
   render() { // render chart
-    
-     let { nickname, name, description, data, currentHum, currentTemp, currentLux, currentFertility } = this.state
+
+     let { nickname, name, description, data, currentHum,
+       currentTemp, currentLux, currentFertility } = this.state
 
     return(
       <div className='DetailedPlantPage'>
         <div className='DetailedPlantPage-content'>
           <div className='DetailedPlantPage-info'>
-            <h2>{ nickname }</h2>
+            <h1>{ nickname }</h1>
+            <h4>{ name } </h4>
             <h4>{ description }</h4>
-            <p>{ currentHum } </p>
-            <p>{ currentTemp } </p>
-            <p>{ currentLux } </p>
-            <p>{ currentFertility } </p>
+           <div className='DetailedPlantPage-info-box'>
+             <FontAwesome className='hum-icon' name='tint' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+             <p>{ currentHum } %</p>
+           </div>
+            <div className='DetailedPlantPage-info-box' >
+              <FontAwesome className='temp-icon' name='thermometer-three-quarters' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+              <p>{ currentTemp } &deg;C</p>
+            </div>
+            <div className='DetailedPlantPage-info-box'>
+              <FontAwesome className='lux-icon' name='sun-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+              <p>{ currentLux }lux</p>
+            </div>
+            <div className='DetailedPlantPage-info-box'>
+              <FontAwesome className='fertility-icon' name='flask' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+              <p>{ currentFertility } f* </p>
+            </div>
           </div>
           <div className='DetailedPlantPage-chart'>
             { data &&

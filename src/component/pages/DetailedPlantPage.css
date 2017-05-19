@@ -1,3 +1,8 @@
+@fontface {
+  font-family: ‘Roboto’, sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Roboto')
+}
+
 .DetailedPlantPage {
   position: fixed;
   top: 50%;
@@ -13,19 +18,57 @@
 }
 
 .DetailedPlantPage-content {
-  background-color: #fefefe;
+  background-color: #fff;
   border-radius: 5px;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
   max-width: 80%; /* Could be more or less, depending on screen size */
   height: 60vh;
 }
 
 .DetailedPlantPage-info {
   float: left;
+  width: 50%;
+}
+
+.DetailedPlantPage-info-box {
+  margin-left: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1F3E18;
+  float: left;
+  width: 80%;
+}
+
+.DetailedPlantPage-info h1, h2, h3, h4, h5, h6 {
+  color: #1F3E18;
+  margin: 0;
+}
+
+.DetailedPlantPage-info h1 {
+  font-size: 4em;
+}
+
+.DetailedPlantPage-info h3 {
+  font-size: 3em;
+}
+
+.DetailedPlantPage-info h4 {
+  font-size: 2em;
+}
+
+.DetailedPlantPage-info p {
+  float:right;
+  font-size: 2em;
+  margin: 0;
 }
 
 .DetailedPlantPage-chart {
   float: right;
+  width: 50%;
+}
+
+.hum-icon, .temp-icon, .lux-icon, .fertility-icon {
+  margin-left: 10px;
+  float: left;
 }
