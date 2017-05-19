@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Menu from './modals/Menu';
 import './App.css';
 
 // TODO: Import menu back and render it...
@@ -14,20 +13,12 @@ class App extends Component {
     }
   }
 
-  closeMenu = () => this.setState({ isMenuOpen: false })
-  // closeMenuAndLogout = () => {
-  //   this.closeMenu()
-  //   this._handleLogout()
-  // }
 
   render() {
-    let {isMenuOpen} = this.state;
+    console.log(this.state, "How about this one?");
     return (
       <div className="App">
         {/* TODO: Render the menu here... */}
-        <Menu show={isMenuOpen}
-          closeMenu={this.closeMenu}
-          router={this.props.router}/>
         {this.props.children}
       </div>
     );

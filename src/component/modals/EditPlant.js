@@ -57,7 +57,7 @@ export default class EditPlant extends Component {
   render(){
     return(
       <div className="edit-plant-modal">
-          <span className="close-icon" >×</span>
+          <span className="close-icon"><a href="/">×</a></span>
           <h1>Edit Plant Card</h1>
           <input type="text" placeholder="Nicename" value={this.state.nickname}
             onChange={({target})=>this.setState({nickname:target.value})}/>
@@ -82,7 +82,7 @@ export default class EditPlant extends Component {
           <input type="test" placeholder="Minlux" value={this.state.minlux}
             onChange={({target})=>this.setState({minlux:target.value})}/>
           <div className="create__card-button">
-            <button onClick={this._submitCard}>Submit Plant</button>
+            <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
           </div>
       </div>
     );
