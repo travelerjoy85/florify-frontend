@@ -15,7 +15,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state, "How about this one?");
     return (
       <div className="App">
         {/* TODO: Render the menu here... */}
