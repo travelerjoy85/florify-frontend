@@ -3,26 +3,28 @@ import './DetailedPlantPage.css';
 import Chart from '../charts/Chart.js'
 import api from '../../api';
 import FontAwesome from 'react-fontawesome';
-
-const HUMIDITY = 'hum'
-const TEMPERATURE = 'temp'
-const LUX = 'lux'
-const FERTILITY = 'ph'
-
-const humidityColor1 = 'rgba(50,50,200, 0.4)'
-const humidityColor2 = 'rgba(50,50,200, 1)'
-const temperatureColor1 = 'rgba(200,50,50, 0.4)'
-const temperatureColor2 = 'rgba(200,50,50, 1)'
-const luxColor1 = 'rgba(50,50,200, 0.4)'
-const luxColor2 = 'rgba(50,50,200, 1)'
-const fertilityColor1 = 'rgba(50,50,200, 0.4)'
-const fertilityColor2 = 'rgba(50,50,200, 1)'
+import moment from 'moment';
+import * as util from '../../util';
 
 
 export default class DetailedPlantPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      period: "hour",
+      hum: true,
+      temp:false,
+      lux: true,
+      ph:false,
+      nickname: '',
+      name: '',
+      description: '',
+      data: '',
+      currentHum: '',
+      currentTemp: '',
+      currentLux: '',
+      currentFertility: ''
+    };
   }
 
   componentDidMount() {
@@ -38,35 +40,43 @@ export default class DetailedPlantPage extends Component {
 
   }
 
-
   _fetchPlantCard = () => {
-      api.getPlantDetail(this.props.params.id, this.props.time)
+      api.getPlantDetail(this.props.params.id, this.state.period)
       .then(res => {
         let datum = res.body
+
+        let nickname = (res.body.nickname)
+        let name = (res.body.name)
+        let description = (res.body.description)
 
         let currentHum = datum.hum[datum.hum.length-1]
         let currentTemp = datum.temp[datum.temp.length-1]
         let currentLux = datum.lux[datum.lux.length-1]
         let currentFertility = datum.ph[datum.ph.length-1]
 
-        let humDataSet = this._dataSetFactory(HUMIDITY, datum.hum)
-        let tempDataSet = this._dataSetFactory(TEMPERATURE, datum.temp)
-        let luxDataSet = this._dataSetFactory(LUX, datum.lux)
-        let fertilityDataSet = this._dataSetFactory(FERTILITY, datum.ph)
-        //
-        // let humlabels = datum.hum.map(el => moment(el.createdAt).format('h:mm:ss'))
-        // let templabels = datum.temp.map(el => moment(el.createdAt).format('h:mm:ss'))
-        // let luxlabels = datum.lux.map(el => moment(el.createdAt).format('h:mm:ss'))
-        // let fertilitylabels = datum.ph.map(el => moment(el.createdAt).format('h:mm:ss'))
-        // // console.log(res.body)
+        let humDataSet = util.dataSetFactory(util.HUMIDITY, datum.hum)
+        let tempDataSet = util.dataSetFactory(util.TEMPERATURE, datum.temp)
+        let luxDataSet = util.dataSetFactory(util.LUX, datum.lux)
+        let fertilityDataSet = util.dataSetFactory(util.FERTILITY, datum.ph)
 
-        this.setState({ data: {
-          labels: res.body.timeAxis,
-          datasets: [humDataSet, fertilityDataSet, tempDataSet, luxDataSet]
-        },
-          nickname: res.body.nickname,
-          name: res.body.name,
-          description: res.body.description,
+        let humlabels = res.body.timeAxis.map(el => moment(el).format('h:mm'))
+
+        let options = util.optionsFactory(
+          [util.HUMIDITY] //, util.TEMPERATURE, util.FERTILITY, util.LUX]
+        )
+
+        console.log(humDataSet)
+        console.log(options)
+
+        this.setState({
+          data: {
+            labels: humlabels,
+            datasets: [humDataSet] //, tempDataSet, luxDataSet, fertilityDataSet]
+          },
+          option: options,
+          nickname: nickname,
+          name: name,
+          description: description,
           currentHum: Math.round(currentHum),
           currentTemp: Math.round(currentTemp),
           currentLux: Math.round(currentLux),
@@ -74,49 +84,6 @@ export default class DetailedPlantPage extends Component {
          })
       })
       .catch(console.error)
-  }
-
-  _dataSetFactory = (type, dataArray) => {
-    if (type === HUMIDITY) {
-      return {
-        label: 'humidity',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: humidityColor1,
-        borderColor: humidityColor2,
-        data: dataArray.map(el => el)
-      }
-    }
-    if (type === TEMPERATURE) {
-      return {
-        label: 'temperature',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: temperatureColor1,
-        borderColor: temperatureColor2,
-        data: dataArray.map(el => el)
-      }
-    }
-    if (type === LUX) {
-      return {
-        label: 'Light',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: luxColor1,
-        borderColor: luxColor2,
-        data: dataArray.map(el => el)
-      }
-    }
-    if (type === FERTILITY) {
-      return {
-        label: 'pH',
-        fill: false,
-        lineTension: 0.3,
-        backgroundColor: fertilityColor1,
-        borderColor: fertilityColor2,
-        data: dataArray.map(el => el)
-      }
-    }
   }
 
   render() { // render chart
@@ -150,7 +117,7 @@ export default class DetailedPlantPage extends Component {
           </div>
           <div className='DetailedPlantPage-chart'>
             { data &&
-              <Chart data={ data }/>
+              <Chart data={ data } options={this.state.options}/>
             }
           </div>
         </div>

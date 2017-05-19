@@ -21,14 +21,14 @@
   background-color: #fff;
   border-radius: 5px;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 5%;
   max-width: 80%; /* Could be more or less, depending on screen size */
   height: 60vh;
 }
 
 .DetailedPlantPage-info {
   float: left;
-  width: 50%;
+  width: 40%;
 }
 
 .DetailedPlantPage-info-box {
@@ -46,26 +46,26 @@
 }
 
 .DetailedPlantPage-info h1 {
-  font-size: 4em;
+  font-size: 4vh;
 }
 
 .DetailedPlantPage-info h3 {
-  font-size: 3em;
+  font-size: 3vh;
 }
 
 .DetailedPlantPage-info h4 {
-  font-size: 2em;
+  font-size: 2vh;
 }
 
 .DetailedPlantPage-info p {
   float:right;
-  font-size: 2em;
+  font-size: 2vh;
   margin: 0;
 }
 
 .DetailedPlantPage-chart {
   float: right;
-  width: 50%;
+  width: 60%;
 }
 
 .hum-icon, .temp-icon, .lux-icon, .fertility-icon {

@@ -61,7 +61,8 @@ export default class Home extends Component {
                 updatedAt={plant.updatedAt}
               />
             )}
-            <AddPlantCard showModal={this._toggleCreateModal} />
+
+            <AddPlantCard showModal={ this._toggleCreateModal } />
             {this.state.showCreateModal &&
               <div className="backdrop">
                   <CreatePlant closeModal={this._toggleCreateModal}/>
