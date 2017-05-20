@@ -62,18 +62,18 @@ export default class DetailedPlantPage extends Component {
         let labels = res.body.timeAxis.map(el => moment(el).format('h:mm'))
 
         let options = util.optionsFactory(
-          [util.HUIDITY] //, util.TEMPERATURE, util.FERTILITY, util.LUX]
+          [util.HUMIDITY, util.TEMPERATURE, util.FERTILITY, util.LUX]
         )
 
         // console.log(humDataSet)
-        console.log(options)
+        // console.log(options)
 
         this.setState({
           data: {
             labels: labels,
-            datasets: [humDataSet] //, tempDataSet, luxDataSet, fertilityDataSet]
+            datasets: [humDataSet, tempDataSet, luxDataSet, fertilityDataSet]
           },
-          option: options,
+          options: options,
           nickname: nickname,
           name: name,
           description: description,
