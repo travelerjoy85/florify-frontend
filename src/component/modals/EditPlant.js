@@ -83,6 +83,7 @@ export default class EditPlant extends Component {
             onChange={({target})=>this.setState({minlux:target.value})}/>
           <div className="create__card-button">
             <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
+            <button className="plant-delete-button" onClick={this._handleDelete }>Delete</button>
           </div>
       </div>
     );
