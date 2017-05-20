@@ -34,6 +34,13 @@ const yAxisIdHashTable = {
   [FERTILITY]: 'y-axis-ph'
 }
 
+const scaleHashTable = {
+  [HUMIDITY]: '1',
+  [TEMPERATURE]: '1',
+  [LUX]: '100',
+  [FERTILITY]: '100'
+}
+
 
 export const dataSetFactory = (type, dataArray) => {
   if (type === HUMIDITY) {
@@ -126,12 +133,14 @@ export function optionsFactory(typesRequestedArray) {
   }
 
   let yAxesArray = typesRequestedArray.map((type, i) => {
-    console.log(type, yAxisIdHashTable[type])
+    // console.log(type, yAxisIdHashTable[type])
     let yAxisPerculiarToType = {
       position: i % 2===0 ? 'left' : 'right',
       id: yAxisIdHashTable[type],
       ticks:{
         fontColor: colorHashTable[type],
+        stepSize: scaleHashTable[type],
+        suggestedMin: 10,
         callback: (value) => parseFloat(value.toFixed(2))+unitHashTable[type]
       }
     }
