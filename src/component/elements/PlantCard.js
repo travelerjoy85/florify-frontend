@@ -12,6 +12,7 @@ export default class PlantCard extends Component {
     this.state = {
     //isDeleteButtonClicked: false,
     showEditModal: false
+    
     }
 }
 
