@@ -49,16 +49,15 @@ export default class EditPlant extends Component {
         minhum: minhum,
         maxlux: maxlux,
         minlux: minlux
-      }).then(() => this.props.fetchPlants())
-      .catch(console.error)
+      }).catch(console.error)
     }
     this.props.closeModal()
   }
 
   render(){
-    console.log(this.props, "this is to test if EditPlant form is rendered");
     return(
       <div className="edit-plant-modal">
+
         <span className="close-icon" >×</span>
         <h1>Edit Plant Card</h1>
         <input type="text" placeholder="Nicename" value={this.state.nickname}
@@ -95,7 +94,8 @@ export default class EditPlant extends Component {
             {/*onChange={({target})=>this.setState({minlux:target.value})}/>*/}
         {/*<br/>*/}
           <div className="create__card-button">
-            <button onClick={this._submitCard}>Submit Plant</button>
+            <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
+            <button className="plant-delete-button" onClick={this._handleDelete }>Delete</button>
           </div>
       </div>
     );
