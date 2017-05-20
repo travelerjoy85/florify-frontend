@@ -44,6 +44,7 @@ export default class DetailedPlantPage extends Component {
   _fetchPlantCard = () => {
       api.getPlantDetail(this.props.params.id, this.state.period)
       .then(res => {
+
         let datum = res.body
         // left hand side stuff
         let nickname = (res.body.plant.nickname)
@@ -94,6 +95,7 @@ export default class DetailedPlantPage extends Component {
   // _chartDataGenerator = () =>
 
   render() { // render chart
+
     // console.log(this.state)
     let { nickname, name, description, currentHum,
        currentTemp, currentLux, currentFertility } = this.state
