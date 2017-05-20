@@ -102,6 +102,7 @@ export default class DetailedPlantPage extends Component {
 
     let chartStuff = this._getDataAndOptions()
 
+
     return(
       <div className='DetailedPlantPage'>
         <div className='DetailedPlantPage-content'>
