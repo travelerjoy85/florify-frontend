@@ -57,30 +57,42 @@ export default class EditPlant extends Component {
   render(){
     return(
       <div className="edit-plant-modal">
-          <span className="close-icon"><a href="/">×</a></span>
-          <h1>Edit Plant Card</h1>
-          <input type="text" placeholder="Nicename" value={this.state.nickname}
+
+        <span className="close-icon" >×</span>
+        <h1>Edit Plant Card</h1>
+        <input type="text" placeholder="Nicename" value={this.state.nickname}
             onChange={({target})=>this.setState({nickname:target.value})}/>
+        <br/>
           <input type="text" placeholder="Name" value={this.state.name}
             onChange={({target})=>this.setState({name:target.value})}/>
+        <br/>
           <input type="test" placeholder="Description" value={this.state.description}
             onChange={({target})=>this.setState({description:target.value})}/>
-          <input type="test" placeholder="Maxtemp" value={this.state.maxtemp}
-            onChange={({target})=>this.setState({maxtemp:target.value})}/>
-          <input type="test" placeholder="Mintemp" value={this.state.mintemp}
-            onChange={({target})=>this.setState({mintemp:target.value})}/>
-          <input type="test" placeholder="Maxph" value={this.state.maxph}
-            onChange={({target})=>this.setState({maxph:target.value})}/>
-          <input type="test" placeholder="Minph" value={this.state.minph}
-            onChange={({target})=>this.setState({minph:target.value})}/>
-\          <input type="test" placeholder="Maxhum" value={this.state.maxhum}
-            onChange={({target})=>this.setState({maxhum:target.value})}/>
-          <input type="test" placeholder="Minhum" value={this.state.minhum}
-            onChange={({target})=>this.setState({minhum:target.value})}/>
-          <input type="test" placeholder="Maxlux" value={this.state.maxlux}
-            onChange={({target})=>this.setState({maxlux:target.value})}/>
-          <input type="test" placeholder="Minlux" value={this.state.minlux}
-            onChange={({target})=>this.setState({minlux:target.value})}/>
+        <br/>
+          {/*<input type="test" placeholder="Maxtemp" value={this.state.maxtemp}*/}
+            {/*onChange={({target})=>this.setState({maxtemp:target.value})}/>*/}
+        {/*<br/>*/}
+          {/*<input type="test" placeholder="Mintemp" value={this.state.mintemp}*/}
+            {/*onChange={({target})=>this.setState({mintemp:target.value})}/>*/}
+        {/*<br/>*/}
+          {/*<input type="test" placeholder="Maxph" value={this.state.maxph}*/}
+            {/*onChange={({target})=>this.setState({maxph:target.value})}/>*/}
+        {/*<br/>*/}
+          {/*<input type="test" placeholder="Minph" value={this.state.minph}*/}
+            {/*onChange={({target})=>this.setState({minph:target.value})}/>*/}
+        {/*<br/>*/}
+          {/*<input type="test" placeholder="Maxhum" value={this.state.maxhum}*/}
+            {/*onChange={({target})=>this.setState({maxhum:target.value})}/>*/}
+        {/*<br/>*/}
+          {/*<input type="test" placeholder="Minhum" value={this.state.minhum}*/}
+            {/*onChange={({target})=>this.setState({minhum:target.value})}/>*/}
+        {/*<br/>*/}
+          {/*<input type="test" placeholder="Maxlux" value={this.state.maxlux}*/}
+            {/*onChange={({target})=>this.setState({maxlux:target.value})}/>*/}
+        {/*<br/>*/}
+          {/*<input type="test" placeholder="Minlux" value={this.state.minlux}*/}
+            {/*onChange={({target})=>this.setState({minlux:target.value})}/>*/}
+        {/*<br/>*/}
           <div className="create__card-button">
             <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
             <button className="plant-delete-button" onClick={this._handleDelete }>Delete</button>

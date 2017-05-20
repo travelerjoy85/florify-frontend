@@ -42,6 +42,11 @@
   width: 80%;
 }
 
+.DetailedPlantPage-info-box span {
+  width: 50px;
+  height: 50px;
+}
+
 .DetailedPlantPage-info h1, h2, h3, h4, h5, h6 {
   color: #1F3E18;
   margin: 0;
