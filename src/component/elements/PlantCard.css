@@ -10,15 +10,28 @@
   justify-content: center;
 }
 
-/*.card-edit {*/
-  /*display: flex;*/
-  /*justify-content: space-around;*/
-/*}*/
+.card-item p {
+  margin: 2px;
+}
 
-/*.card-edit button {*/
-  /*padding: 5px;*/
-  /*width: 60px;*/
-  /*border-radius: 5px;*/
-  /*background: #1F3E18;*/
-  /*color: #F8F8F8;*/
-/*}*/
+.card-item2 {
+  margin-left: 20px;
+}
+
+.card-item-info-box {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #1F3E18;
+  margin: 5px 0;
+}
+
+.card-item-info-box span {
+  width: 50px;
+  height: 50px;
+  margin-left: 0;
+}
+
+.card-item-info-box p {
+  width: 100px;
+}
