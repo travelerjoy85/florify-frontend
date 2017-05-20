@@ -88,6 +88,9 @@ export function optionsFactory(typesRequestedArray) {
   const baselineOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    legend: {
+      display:false
+    },
     tooltips: {
       enabled: false
     },
@@ -125,7 +128,7 @@ export function optionsFactory(typesRequestedArray) {
   let yAxesArray = typesRequestedArray.map((type, i) => {
     console.log(type, yAxisIdHashTable[type])
     let yAxisPerculiarToType = {
-      position: i%2===0 ? 'left' : 'right',
+      position: i % 2===0 ? 'left' : 'right',
       id: yAxisIdHashTable[type],
       ticks:{
         fontColor: colorHashTable[type],
@@ -134,9 +137,9 @@ export function optionsFactory(typesRequestedArray) {
     }
     return Object.assign({}, yAxisBaseline, yAxisPerculiarToType)
   })
-  
+
   // console.log(yAxesArray)
-  
+
   baselineOptions.scales.yAxes = yAxesArray
 
   return baselineOptions
