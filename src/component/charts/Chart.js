@@ -12,11 +12,12 @@ export default class Chart extends Component {
     return (
       <div style={{maxHeight: '400px'}}>
         <Line
+          redraw
           data={this.props.data}
-	         width={400}
-	         height={400}
-	         options={this.props.options}
-          />
+          width={400}
+          height={400}
+          options={this.props.options}
+        />
       </div>
     )
   }

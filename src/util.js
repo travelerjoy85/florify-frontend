@@ -39,12 +39,12 @@ export const dataSetFactory = (type, dataArray) => {
   if (type === HUMIDITY) {
     return {
       label: 'humidity',
-      fill: true,
+      fill: false,
       lineTension: 0.3,
       backgroundColor: humidityColor1,
       borderColor: humidityColor2,
       data: dataArray.map(el => el),
-      // yAxisID: yAxisIdHashTable[type]
+      yAxisID: yAxisIdHashTable[type]
     }
   }
   if (type === TEMPERATURE) {
@@ -55,7 +55,7 @@ export const dataSetFactory = (type, dataArray) => {
       backgroundColor: temperatureColor1,
       borderColor: temperatureColor2,
       data: dataArray.map(el => el),
-      // yAxisID: yAxisIdHashTable[type]
+      yAxisID: yAxisIdHashTable[type]
     }
   }
   if (type === LUX) {
@@ -66,7 +66,7 @@ export const dataSetFactory = (type, dataArray) => {
       backgroundColor: luxColor1,
       borderColor: luxColor2,
       data: dataArray.map(el => el),
-      // yAxisID: yAxisIdHashTable[type]
+      yAxisID: yAxisIdHashTable[type]
     }
   }
   if (type === FERTILITY) {
@@ -77,7 +77,7 @@ export const dataSetFactory = (type, dataArray) => {
       backgroundColor: fertilityColor1,
       borderColor: fertilityColor2,
       data: dataArray.map(el => el),
-      // yAxisID: yAxisIdHashTable[type]
+      yAxisID: yAxisIdHashTable[type]
     }
   }
 }
@@ -123,6 +123,7 @@ export function optionsFactory(typesRequestedArray) {
   }
 
   let yAxesArray = typesRequestedArray.map((type, i) => {
+    console.log(type, yAxisIdHashTable[type])
     let yAxisPerculiarToType = {
       position: i%2===0 ? 'left' : 'right',
       id: yAxisIdHashTable[type],
@@ -133,7 +134,9 @@ export function optionsFactory(typesRequestedArray) {
     }
     return Object.assign({}, yAxisBaseline, yAxisPerculiarToType)
   })
-
+  
+  // console.log(yAxesArray)
+  
   baselineOptions.scales.yAxes = yAxesArray
 
   return baselineOptions
