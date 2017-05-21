@@ -16,7 +16,7 @@ export default class PlantCard extends Component {
     }
 }
 
-  _toggleEditModal = () => this.setState({showEditModal: !this.state.showEditModaleModal})
+  _toggleEditModal = () => this.setState({showEditModal: !this.state.showEditModal})
 
   render() {
     // const isLoggedIn = auth.isLoggedIn();

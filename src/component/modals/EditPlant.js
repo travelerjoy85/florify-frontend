@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './EditPlant.css';
 import api from '../../api';
 import DeletePlant from './DeletePlant';
+import DeletePlantCard from '../elements/DeletePlantCard';
 
 const ENTER = 13
 
@@ -20,9 +21,12 @@ export default class EditPlant extends Component {
       maxhum: this.props.plantData.maxhum,
       minhum: this.props.plantData.minhum,
       maxlux: this.props.plantData.maxlux,
-      minlux: this.props.plantData.minlux
+      minlux: this.props.plantData.minlux,
+      showDeleteModal: false
     };
   }
+
+  _toggleDeleteModal = () => this.setState({showDeleteModal: !this.state.showDeleteModal})
 
    plantId = () => {
      return this.props.params.id;
@@ -86,7 +90,12 @@ export default class EditPlant extends Component {
             onChange={({target})=>this.setState({minlux:target.value})}/>
           <div className="create__card-button">
             <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
-            <DeletePlant fetchPlants={this._fetchPlants} />
+            <DeletePlantCard showModal={ this._toggleDeleteModal } />
+            {this.state.showDeleteModal &&
+              <div className="backdrop">
+                  <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
+              </div>
+            }
           </div>
       </div>
     );
