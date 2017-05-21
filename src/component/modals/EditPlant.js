@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './EditPlant.css'
-import api from '../../api'
+import './EditPlant.css';
+import api from '../../api';
+import DeletePlant from './DeletePlant';
 
 const ENTER = 13
 
@@ -28,6 +29,7 @@ export default class EditPlant extends Component {
    }
 
   _submitCard = (event) => {
+    console.log("Edit 1");
     event.preventDefault();
 
     let {
@@ -55,6 +57,7 @@ export default class EditPlant extends Component {
   }
 
   render(){
+    console.log("test 2");
     return(
       <div className="edit-plant-modal">
           <span className="close-icon"><a href="/">×</a></span>
@@ -83,7 +86,7 @@ export default class EditPlant extends Component {
             onChange={({target})=>this.setState({minlux:target.value})}/>
           <div className="create__card-button">
             <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
-            <button className="plant-delete-button" onClick={this._handleDelete }>Delete</button>
+            <DeletePlant fetchPlants={this._fetchPlants} />
           </div>
       </div>
     );
