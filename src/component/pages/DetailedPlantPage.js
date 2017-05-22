@@ -136,38 +136,43 @@ export default class DetailedPlantPage extends Component {
 
     return(
       <div className='DetailedPlantPage'>
-            <Collection className='DetialedPlantPage-content' header= { nickname }>
-              <CollectionItem className="DetailedPlantPage-info-box">{ name }</CollectionItem>
-              <CollectionItem className="DetailedPlantPage-info-box">{ description }</CollectionItem>
-              <CollectionItem className={ this.state[util.HUMIDITY] ? "DetailedPlantPage-info-hum-toggled" : "DetailedPlantPage-info-box" }
+        <div className='DetailedPlantPage-content'>
+          <div className='row'>
+            <div className='DetailedPlantPage-info col-large-5 col-medium-6 col-small-12'>
+              <h1>{ nickname }</h1>
+              <h4>{ name } </h4>
+              <h4>{ description }</h4>
+              <div className={ this.state[util.HUMIDITY] ? "DetailedPlantPage-info-hum-toggled" : "DetailedPlantPage-info-box" }
                 onClick={ () => {this._toggleDataSet(util.HUMIDITY)} }>
                 <FontAwesome className='hum-icon' name='tint' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
                 <p>{ currentHum } %</p>
-            </CollectionItem>
-              <CollectionItem
+            </div>
+              <div
                 className={ this.state[util.TEMPERATURE] ? "DetailedPlantPage-info-temp-toggled" : "DetailedPlantPage-info-box" }
                   onClick={ () => this._toggleDataSet(util.TEMPERATURE)}>
                   <FontAwesome className='temp-icon' name='thermometer-three-quarters' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
                   <p>{ currentTemp } &deg;C</p>
 
-            </CollectionItem>
-            <CollectionItem className={ this.state[util.LUX] ? "DetailedPlantPage-info-lux-toggled" : "DetailedPlantPage-info-box" }
+            </div>
+            <div className={ this.state[util.LUX] ? "DetailedPlantPage-info-lux-toggled" : "DetailedPlantPage-info-box" }
                 onClick={ () => this._toggleDataSet(util.LUX)}>
                 <FontAwesome className='lux-icon' name='sun-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
                 <p>{ currentLux }lux</p>
-            </CollectionItem>
-            <CollectionItem className={ this.state[util.FERTILITY] ? "DetailedPlantPage-info-ph-toggled" : "DetailedPlantPage-info-box" }
+            </div>
+            <div className={ this.state[util.FERTILITY] ? "DetailedPlantPage-info-ph-toggled" : "DetailedPlantPage-info-box" }
                 onClick={ () => this._toggleDataSet(util.FERTILITY)}>
                 <FontAwesome className='fertility-icon' name='flask' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
                 <p>{ currentFertility } f* </p>
-            </CollectionItem>
-          </Collection>
+            </div>
+          </div>
           <div className='DetailedPlantPage-chart'>
             { !this.state.loading &&
               <Chart data={ chartStuff.data } options={ chartStuff.options }/>
             }
           </div>
       </div>
+    </div>
+  </div>
     );
   }
 

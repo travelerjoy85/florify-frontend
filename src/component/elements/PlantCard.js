@@ -5,6 +5,7 @@ import './PlantCard.css';
 import api from '../../api';
 import FontAwesome from 'react-fontawesome';
 import EditPlant from '../modals/EditPlant';
+import DeletePlant from '../modals/DeletePlant';
 
 export default class PlantCard extends Component {
   constructor(props) {
@@ -15,12 +16,7 @@ export default class PlantCard extends Component {
     }
 }
 
-  _handleDelete = () => {
-    api.deletePlant(this.props.id)
-    .then(() => this.props.fetchPlants())
-  }
-
-  _toggleEditModal = () => this.setState({showEditModal: !this.state.showEditModaleModal})
+  _toggleEditModal = () => this.setState({showEditModal: !this.state.showEditModal})
 
   render() {
     // const isLoggedIn = auth.isLoggedIn();
@@ -59,9 +55,6 @@ export default class PlantCard extends Component {
 
           <div className="card-edit">
             <button className="plant-edit-button" onClick={()=>this.setState({showEditModal: true})}>Edit</button>
-
-
-
           </div>
           {this.state.showEditModal ? <EditPlant plantData={this.props} closeModal={this._toggleEditModal}/> : null}
 

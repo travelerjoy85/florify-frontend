@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './CreatePlant.css';
 import api from '../../api';
+import './DeletePlant.css';
 
 const ENTER = 13
 
@@ -61,7 +62,6 @@ export default class CreatePlant extends Component {
       <div className="create-plant-modal">
 
           {/*closing button*/}
-          <span className="close-icon" >×</span>
 
           <h1>Create Plant Card</h1>
           <input type="text" placeholder="Nickname" ref="nickname" onKeyUp={this._handleTyping}/><br/>
@@ -69,7 +69,10 @@ export default class CreatePlant extends Component {
           <input type="test" placeholder="Description" ref="description" onKeyUp={this._handleTyping}/><br/>
 
           <div className="create__card-button">
-            <button onClick={this._submitCard}>Submit Plant</button>
+            <span>
+              <button onClick={this._submitCard}>Submit Plant</button>
+              <button><a href="/">Cancel</a></button>
+            </span>
           </div>
       </div>
     );
