@@ -134,6 +134,7 @@ export default class EditPlant extends Component {
             </span>
             <button><a href="/">Cancel</a></button>
           </div>
+        </div>
       </div>
     );
   }
