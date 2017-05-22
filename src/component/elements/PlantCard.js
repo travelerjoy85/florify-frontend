@@ -54,9 +54,9 @@ export default class PlantCard extends Component {
             </Link>
 
           <div className="card-edit">
-            <button className="plant-edit-button" onClick={()=>this.setState({showEditModal: true})}>Edit</button>
+            <button className="plant-edit-button" onClick={()=>this.setState({showEditModal: true})}><FontAwesome className='edit-icon' name='pencil-square-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></button>
           </div>
-          {this.state.showEditModal ? <EditPlant plantData={this.props} closeModal={this._toggleEditModal}/> : null}
+            {this.state.showEditModal ? <div className="backdrop"><EditPlant plantData={this.props} closeModal={this._toggleEditModal}/></div> : null}
 
         </div>
       );

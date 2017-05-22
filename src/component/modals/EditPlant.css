@@ -25,6 +25,10 @@
     to {transform: scale(1)}
 }
 
+.check-icon {
+
+}
+
 /* The Close Button */
 .close-icon {
     position: absolute;
