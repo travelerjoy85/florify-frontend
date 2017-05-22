@@ -102,14 +102,14 @@ export default class EditPlant extends Component {
           <div className="create__card-button">
             <span>
               <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
-              <button><a href="/">Cancel</a></button>
+              <DeletePlantCard showModal={ this._toggleDeleteModal } />
+              {this.state.showDeleteModal &&
+                <div className="backdrop">
+                    <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
+                </div>
+              }
             </span>
-            <DeletePlantCard showModal={ this._toggleDeleteModal } />
-            {this.state.showDeleteModal &&
-              <div className="backdrop">
-                  <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
-              </div>
-            }
+            <button><a href="/">Cancel</a></button>
           </div>
       </div>
     );
