@@ -5,6 +5,7 @@ import AddPlantCard from '../elements/AddPlantCard';
 // import auth from '../../auth';
 import './Home.css';
 import CreatePlant from '../modals/CreatePlant';
+import FontAwesome from 'react-fontawesome';
 
 // This component is the INDEXROUTE "/"
 // it is responsible for fetching the plantsdata and map it to a
@@ -54,10 +55,10 @@ export default class Home extends Component {
                   id={plant.id}
                   nickname={plant.nickname}
                   name={plant.name}
-                  currentLux={plant.latestLux.reading}
-                  currentFertility={plant.latestPh.reading}
-                  currentTemp={plant.latestTemp.reading}
-                  currentHum={plant.latestHum.reading}
+                  // currentLux={plant.latestLux.reading}
+                  // currentFertility={plant.latestPh.reading}
+                  // currentTemp={plant.latestTemp.reading}
+                  // currentHum={plant.latestHum.reading}
                 />
               }
             )}

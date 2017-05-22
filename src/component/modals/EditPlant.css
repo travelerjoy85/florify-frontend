@@ -8,7 +8,7 @@
     /*position: absolute;*/
 }
 
- /*Add Animation */
+/*Add Animation */
 .edit-plant-modal {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
@@ -24,6 +24,10 @@
 @keyframes zoom {
     from {transform: scale(0.1)}
     to {transform: scale(1)}
+}
+
+.check-icon {
+
 }
 
 /* The Close Button */
