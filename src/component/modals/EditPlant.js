@@ -32,6 +32,19 @@ export default class EditPlant extends Component {
      return this.props.params.id;
    }
 
+   _handleDelete = (event) => {
+     event.preventDefault();
+       api.deletePlant(this.state.id)
+      //  .then(() => {this.props.fetchPlants()}).catch(console.error)}
+      //  this.props.closeModal()
+       .then(() => {
+         this.props.fetchPlants()
+       }).catch((err) => {
+         console.log(err)
+       })
+       this.props.closeModal()
+   }
+
   _submitCard = (event) => {
     console.log("Edit 1");
     event.preventDefault();
@@ -55,16 +68,16 @@ export default class EditPlant extends Component {
         minhum: minhum,
         maxlux: maxlux,
         minlux: minlux
-      }).catch(console.error)
-    }
-    this.props.closeModal()
+      })
+      .then(() => {this.props.fetchPlants()}).catch(console.error)}
+      this.props.closeModal()
   }
+
 
   render(){
     console.log("test 2");
     return(
       <div className="edit-plant-modal">
-
         <h1>Edit Plant Card</h1>
         <input type="text" placeholder="Nicename" value={this.state.nickname}
             onChange={({target})=>this.setState({nickname:target.value})}/>
@@ -75,38 +88,44 @@ export default class EditPlant extends Component {
           <input type="test" placeholder="Description" value={this.state.description}
             onChange={({target})=>this.setState({description:target.value})}/>
         <br/>
-          {/*<input type="test" placeholder="Maxtemp" value={this.state.maxtemp}*/}
-            {/*onChange={({target})=>this.setState({maxtemp:target.value})}/>*/}
-        {/*<br/>*/}
-          {/*<input type="test" placeholder="Mintemp" value={this.state.mintemp}*/}
-            {/*onChange={({target})=>this.setState({mintemp:target.value})}/>*/}
-        {/*<br/>*/}
-          {/*<input type="test" placeholder="Maxph" value={this.state.maxph}*/}
-            {/*onChange={({target})=>this.setState({maxph:target.value})}/>*/}
-        {/*<br/>*/}
-          {/*<input type="test" placeholder="Minph" value={this.state.minph}*/}
-            {/*onChange={({target})=>this.setState({minph:target.value})}/>*/}
-        {/*<br/>*/}
-          {/*<input type="test" placeholder="Maxhum" value={this.state.maxhum}*/}
-            {/*onChange={({target})=>this.setState({maxhum:target.value})}/>*/}
-        {/*<br/>*/}
-          {/*<input type="test" placeholder="Minhum" value={this.state.minhum}*/}
-            {/*onChange={({target})=>this.setState({minhum:target.value})}/>*/}
-        {/*<br/>*/}
-          {/*<input type="test" placeholder="Maxlux" value={this.state.maxlux}*/}
-            {/*onChange={({target})=>this.setState({maxlux:target.value})}/>*/}
-        {/*<br/>*/}
-          {/*<input type="test" placeholder="Minlux" value={this.state.minlux}*/}
-            {/*onChange={({target})=>this.setState({minlux:target.value})}/>*/}
-        {/*<br/>*/}
+          <input type="test" placeholder="Maxtemp" value={this.state.maxtemp}
+            onChange={({target})=>this.setState({maxtemp:target.value})}/>
+        <br/>
+          <input type="test" placeholder="Mintemp" value={this.state.mintemp}
+            onChange={({target})=>this.setState({mintemp:target.value})}/>
+        <br/>
+          <input type="test" placeholder="Maxph" value={this.state.maxph}
+            onChange={({target})=>this.setState({maxph:target.value})}/>
+        <br/>
+          <input type="test" placeholder="Minph" value={this.state.minph}
+            onChange={({target})=>this.setState({minph:target.value})}/>
+        <br/>
+          <input type="test" placeholder="Maxhum" value={this.state.maxhum}
+            onChange={({target})=>this.setState({maxhum:target.value})}/>
+        <br/>
+          <input type="test" placeholder="Minhum" value={this.state.minhum}
+            onChange={({target})=>this.setState({minhum:target.value})}/>
+        <br/>
+          <input type="test" placeholder="Maxlux" value={this.state.maxlux}
+            onChange={({target})=>this.setState({maxlux:target.value})}/>
+        <br/>
+          <input type="test" placeholder="Minlux" value={this.state.minlux}
+            onChange={({target})=>this.setState({minlux:target.value})}/>
+        <br/>
           <div className="create__card-button">
             <span>
               <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
-              <DeletePlantCard showModal={ this._toggleDeleteModal } />
+              <button onClick={this._toggleDeleteModal}>delete</button>
               {this.state.showDeleteModal &&
-                <div className="backdrop">
-                    <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
+                <div>
+                  <h3>Are you sure?</h3>
+                  <button className="confirm-delete-button" onClick={this._handleDelete}>Yes</button>
+                  <button className="cancel-delete-button"><a href="/">No</a></button>
                 </div>
+
+                // <div className="backdrop">
+                //     <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
+                // </div>
               }
             </span>
             <button><a href="/">Cancel</a></button>
