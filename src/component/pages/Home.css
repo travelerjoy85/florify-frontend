@@ -5,7 +5,10 @@
   width: 100vw;
   top: 0;
 }
+.logo {
+  width: 50px;
 
+}
 /* Large */
 .home {
   display: flex;
