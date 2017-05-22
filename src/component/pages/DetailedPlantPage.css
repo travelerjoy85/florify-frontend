@@ -11,14 +11,13 @@
   transform: translate(-50%, -50%);
   z-Index: 10;
   background: #fff;
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4);
   width:100%;
   height:100%;
   border: 0;
 }
 
 .DetailedPlantPage-content {
+  list-style-type: none;
   background-color: #fff;
   border-radius: 5px;
   margin:auto; /* 15% from the top and centered */
@@ -28,12 +27,15 @@
 }
 
 .DetailedPlantPage-info {
+  list-style-type: none;
   float: left;
   width: 40%;
   padding-bottom: 5%;
 }
 
 .DetailedPlantPage-info-box {
+  list-style-type: none;
+  background-color: #fff;
   margin-left: 10%;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -43,8 +45,8 @@
 }
 
 .DetailedPlantPage-info-box span {
-  width: 50px;
-  height: 50px;
+  width: 7%;
+  /*height: 50px;*/
 }
 
 .DetailedPlantPage-info h1, h2, h3, h4, h5, h6 {
@@ -78,4 +80,67 @@
 .hum-icon, .temp-icon, .lux-icon, .fertility-icon {
   margin-left: 10px;
   float: left;
+}
+
+.button {
+  display: inline-block;
+	font-size: 18px;
+	color: #2f70e1;
+	padding: 10px 30px;
+	box-shadow:	0px 1px 3px 0px rgba(0, 0, 0, .3);
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+.DetailedPlantPage-info-hum-toggled {
+  list-style-type: none;
+  margin-left: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1F3E18;
+  float: left;
+  width: 80%;
+	color: rgba(105, 142, 128, 1);
+  background-color: rgba(105, 142, 128, 0.3);
+
+}
+.DetailedPlantPage-info-temp-toggled {
+  list-style-type: none;
+  margin-left: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1F3E18;
+  float: left;
+  width: 80%;
+	color: rgba(19, 46, 61, 1);
+  background-color: rgba(19, 46, 61, 0.3);
+
+}
+.DetailedPlantPage-info-lux-toggled {
+  list-style-type: none;
+  margin-left: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1F3E18;
+  float: left;
+  width: 80%;
+	color: rgba(166, 113, 15, 1);
+  background-color: rgba(166, 113, 15, 0.3);
+
+}
+.DetailedPlantPage-info-ph-toggled {
+  list-style-type: none;
+  margin-left: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1F3E18;
+  float: left;
+  width: 80%;
+	color: rgba(39, 74, 35, 1);
+  background-color: rgba(39, 74, 35, 0.3);
+
+}
+button {
+  margin-top: 80px;
 }

@@ -49,20 +49,20 @@ export default class Home extends Component {
                   id={plant.id}
                   nickname={plant.nickname}
                   name={plant.name}
-                  currentLux={plant.latestLux.reading}
-                  currentFertility={plant.latestPh.reading}
-                  currentTemp={plant.latestTemp.reading}
-                  currentHum={plant.latestHum.reading}
+                  // currentLux={plant.latestLux.reading}
+                  // currentFertility={plant.latestPh.reading}
+                  // currentTemp={plant.latestTemp.reading}
+                  // currentHum={plant.latestHum.reading}
                 />
               }
             )}
 
             <AddPlantCard showModal={ this._toggleCreateModal } />
             {this.state.showCreateModal &&
-          <div className="backdrop">
+            <div className="backdrop">
               <CreatePlant fetchPlants={this._fetchPlants} closeModal={this._toggleCreateModal}/>
-          </div>
-          }
+            </div>
+            }
 
           </div>
       );
