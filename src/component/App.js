@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* TODO: Render the menu here... */}
+
         {this.props.children}
       </div>
     );
