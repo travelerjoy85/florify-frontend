@@ -62,7 +62,7 @@ export default class Home extends Component {
               <CreatePlant fetchPlants={this._fetchPlants} closeModal={this._toggleCreateModal}/>
             </div>
           }
-        </div>
+      </div>
     )
   }
 }

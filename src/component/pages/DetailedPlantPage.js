@@ -5,6 +5,7 @@ import api from '../../api';
 import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
 import * as util from '../../util';
+import '../../gridStyle.css';
 
 
 export default class DetailedPlantPage extends Component {

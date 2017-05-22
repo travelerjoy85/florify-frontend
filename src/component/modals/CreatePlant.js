@@ -61,20 +61,18 @@ export default class CreatePlant extends Component {
     return(
       <div className="create-plant-modal">
 
-          {/*closing button*/}
+        <h1>Create Plant Card</h1>
+        <input type="text" placeholder="Nickname" ref="nickname" onKeyUp={this._handleTyping}/><br/>
+        <input type="text" placeholder="Name" ref="name" onKeyUp={this._handleTyping}/><br/>
+        <input type="test" placeholder="Description" ref="description" onKeyUp={this._handleTyping}/><br/>
 
-          <h1>Create Plant Card</h1>
-          <input type="text" placeholder="Nickname" ref="nickname" onKeyUp={this._handleTyping}/><br/>
-          <input type="text" placeholder="Name" ref="name" onKeyUp={this._handleTyping}/><br/>
-          <input type="test" placeholder="Description" ref="description" onKeyUp={this._handleTyping}/><br/>
-
-          <div className="create__card-button">
-            <span>
-              <button onClick={this._submitCard}>Submit Plant</button>
-              <button><a href="/">Cancel</a></button>
-            </span>
-          </div>
+        <div className="create__card-button">
+          <span>
+            <button onClick={this._submitCard}>Submit Plant</button>
+            <button><a href="/">Cancel</a></button>
+          </span>
+        </div>
       </div>
-    );
+    )
   }
 }
