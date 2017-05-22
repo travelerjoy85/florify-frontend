@@ -16,11 +16,14 @@ export default class PlantCard extends Component {
     }
 }
 
+
+
   _toggleEditModal = () => this.setState({showEditModal: !this.state.showEditModal})
 
   render() {
     // const isLoggedIn = auth.isLoggedIn();
-    let { nickname, name, description, id, currentLux, currentTemp, currentHum, currentFertility} = this.props
+    let { nickname, name, description, id, currentLux, currentTemp, currentHum, currentFertility } = this.props
+    let { fetchPlants } = this.props
 
       return(
         <div className="plant-card">
@@ -57,6 +60,7 @@ export default class PlantCard extends Component {
             <button className="plant-edit-button" onClick={()=>this.setState({showEditModal: true})}><FontAwesome className='edit-icon' name='pencil-square-o' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></button>
           </div>
             {this.state.showEditModal ? <div className="backdrop"><EditPlant plantData={this.props} closeModal={this._toggleEditModal}/></div> : null}
+
 
         </div>
       );

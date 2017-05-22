@@ -44,3 +44,11 @@
 .card-item-info-box p {
   width: 100px;
 }
+
+.card-edit {
+  height: 50px;
+}
+
+.plant-edit-button {
+  margin: 5px;
+}
