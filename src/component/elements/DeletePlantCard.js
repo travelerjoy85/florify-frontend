@@ -7,7 +7,6 @@ import './DeletePlantCard.css';
 export default class DeletePlantCard extends Component {
 
   render() {
-    console.log("DeletePlantCard.js render is working or not??????");
     let { showModal } = this.props
     return (
       <div className="delete-plant-card" onClick={showModal}>
