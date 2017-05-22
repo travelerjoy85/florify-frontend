@@ -101,17 +101,19 @@ export default class EditPlant extends Component {
             onChange={({target})=>this.setState({minlux:target.value})}/>
         <br/>
           <div className="create__card-button">
-            <span>
-              <button onClick={this._submitCard}><a href="/"><FontAwesome className='check-icon' name='check' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></a></button>
-              <DeletePlantCard showModal={ this._toggleDeleteModal } />
-              {this.state.showDeleteModal &&
-                <div className="backdrop">
-                    <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
-                </div>
-              }
-            </span>
+
+            <button onClick={this._submitCard}><a href="/"><FontAwesome className='check-icon' name='check' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></a></button>
             <button><a href="/"><FontAwesome className='cancel-icon' name='times' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></a></button>
           </div>
+            <div>
+              <DeletePlantCard showModal={ this._toggleDeleteModal } />
+                {this.state.showDeleteModal &&
+                <div className="backdrop">
+                  <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
+                </div>
+                }
+            </div>
+
       </div>
     );
   }
