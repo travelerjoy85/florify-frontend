@@ -88,6 +88,9 @@ export default class EditPlant extends Component {
           <input type="test" placeholder="Description" value={this.state.description}
             onChange={({target})=>this.setState({description:target.value})}/>
         <br/>
+
+          <div classNameName="create__card-button">
+
           <input type="test" placeholder="Maxtemp" value={this.state.maxtemp}
             onChange={({target})=>this.setState({maxtemp:target.value})}/>
         <br/>
@@ -117,6 +120,7 @@ export default class EditPlant extends Component {
               <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
               <button onClick={this._toggleDeleteModal}>delete</button>
               {this.state.showDeleteModal &&
+
                 <div>
                   <h3>Are you sure?</h3>
                   <button className="confirm-delete-button" onClick={this._handleDelete}>Yes</button>
@@ -130,6 +134,7 @@ export default class EditPlant extends Component {
             </span>
             <button><a href="/">Cancel</a></button>
           </div>
+        </div>
       </div>
     );
   }
