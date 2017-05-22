@@ -75,5 +75,4 @@ export default class CreatePlant extends Component {
       </div>
     );
   }
-
 }

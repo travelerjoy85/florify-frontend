@@ -29,44 +29,40 @@ export default class Home extends Component {
   }
 
   _fetchPlants = () => {
-      api.getPlants(localStorage.token)
+    api.getPlants(localStorage.token)
       .then(res => {
           this.setState({ plants: res.body })
       })
 
-      .catch(console.error)
+    .catch(console.error)
   }
 
   _toggleCreateModal = () => this.setState({showCreateModal: !this.state.showCreateModal})
   render() {
-      let { plants } = this.state
-      return (
-          <div className="home">
-            { plants && plants.map(plant => {
-                return <PlantCard
-                  fetchPlants={this._fetchPlants}
-                  key={plant.id}
-                  id={plant.id}
-                  nickname={plant.nickname}
-                  name={plant.name}
-                  // currentLux={plant.latestLux.reading}
-                  // currentFertility={plant.latestPh.reading}
-                  // currentTemp={plant.latestTemp.reading}
-                  // currentHum={plant.latestHum.reading}
-                />
-              }
-            )}
-
-            <AddPlantCard showModal={ this._toggleCreateModal } />
-            {this.state.showCreateModal &&
-          <div className="backdrop">
-              <CreatePlant fetchPlants={this._fetchPlants} closeModal={this._toggleCreateModal}/>
-          </div>
+    let { plants } = this.state
+    return (
+      <div className="home">
+        { plants && plants.map(plant => {
+          return <PlantCard
+            fetchPlants={this._fetchPlants}
+            key={plant.id}
+            id={plant.id}
+            nickname={plant.nickname}
+            name={plant.name}
+            // currentLux={plant.latestLux.reading}
+            // currentFertility={plant.latestPh.reading}
+            // currentTemp={plant.latestTemp.reading}
+            // currentHum={plant.latestHum.reading}
+            />
           }
-
-          </div>
-      );
+        )}
+          <AddPlantCard showModal={ this._toggleCreateModal } />
+          {this.state.showCreateModal &&
+            <div className="backdrop">
+              <CreatePlant fetchPlants={this._fetchPlants} closeModal={this._toggleCreateModal}/>
+            </div>
+          }
+        </div>
+    )
   }
-
-
- }
+}
