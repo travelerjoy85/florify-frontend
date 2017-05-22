@@ -4,11 +4,12 @@ import api from '../../api';
 
 export default class DeletePlant extends Component {
 
-  _handleDelete = (event) => {
-    console.log("passing or not????", this.props.id);
-      api.deletePlant(this.props.id)
-      .then(() => this.props.fetchPlants)
-  }
+  // _handleDelete = (event) => {
+  //   event.preventDefault();
+  //   console.log("passing or not????", this.props.id);
+  //     api.deletePlant(this.props.id)
+  //     .then(() => this.props.fetchPlants)
+  // }
 
   render(){
     console.log("DeletePlant.js render is working??????");

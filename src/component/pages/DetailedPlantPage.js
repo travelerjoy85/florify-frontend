@@ -12,7 +12,7 @@ export default class DetailedPlantPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      period: "day",
+      period: "week",
       [util.HUMIDITY]: false,
       [util.TEMPERATURE]: false,
       [util.LUX]: false,
@@ -45,7 +45,7 @@ export default class DetailedPlantPage extends Component {
   _fetchPlantCard = () => {
       api.getPlantDetail(this.props.params.id, this.state.period)
       .then(res => {
-
+        console.log(res.body)
         let datum = res.body
         // left hand side stuff
         let nickname = (res.body.plant.nickname)

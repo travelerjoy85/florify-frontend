@@ -9,8 +9,8 @@ export default class DeletePlantCard extends Component {
   render() {
     let { showModal } = this.props
     return (
-      <div className="delete-plant-card" onClick={showModal}>
-        <button> Delete </button>
+      <div className="delete-plant-card">
+        <button onClick={showModal}> Delete </button>
       </div>
     );
   }
