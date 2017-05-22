@@ -65,7 +65,6 @@ export default class EditPlant extends Component {
     return(
       <div className="edit-plant-modal">
 
-        <span className="close-icon" >×</span>
         <h1>Edit Plant Card</h1>
         <input type="text" placeholder="Nicename" value={this.state.nickname}
             onChange={({target})=>this.setState({nickname:target.value})}/>
@@ -101,7 +100,10 @@ export default class EditPlant extends Component {
             {/*onChange={({target})=>this.setState({minlux:target.value})}/>*/}
         {/*<br/>*/}
           <div className="create__card-button">
-            <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
+            <span>
+              <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
+              <button><a href="/">Cancel</a></button>
+            </span>
             <DeletePlantCard showModal={ this._toggleDeleteModal } />
             {this.state.showDeleteModal &&
               <div className="backdrop">
