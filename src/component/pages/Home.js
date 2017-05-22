@@ -39,6 +39,7 @@ export default class Home extends Component {
 
   _toggleCreateModal = () => this.setState({showCreateModal: !this.state.showCreateModal})
   render() {
+
     let { plants } = this.state
     return (
       <div className="home">
@@ -64,5 +65,6 @@ export default class Home extends Component {
           }
       </div>
     )
+
   }
 }
