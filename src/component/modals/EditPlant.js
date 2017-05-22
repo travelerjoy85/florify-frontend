@@ -63,8 +63,7 @@ export default class EditPlant extends Component {
   render(){
     console.log("test 2");
     return(
-      <div className="edit-plant-modal">
-
+      <div classNameName="edit-plant-modal">
         <h1>Edit Plant Card</h1>
         <input type="text" placeholder="Nicename" value={this.state.nickname}
             onChange={({target})=>this.setState({nickname:target.value})}/>
@@ -99,12 +98,12 @@ export default class EditPlant extends Component {
           {/*<input type="test" placeholder="Minlux" value={this.state.minlux}*/}
             {/*onChange={({target})=>this.setState({minlux:target.value})}/>*/}
         {/*<br/>*/}
-          <div className="create__card-button">
+          <div classNameName="create__card-button">
             <span>
               <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
               <DeletePlantCard showModal={ this._toggleDeleteModal } />
               {this.state.showDeleteModal &&
-                <div className="backdrop">
+                <div classNameName="backdrop">
                     <DeletePlant id={this.state.id} fetchPlants={this._fetchPlants} closeModal={this._toggleDeleteModal}/>
                 </div>
               }
