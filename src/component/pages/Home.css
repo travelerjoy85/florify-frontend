@@ -5,7 +5,10 @@
   width: 100vw;
   top: 0;
 }
+.logo {
+  width: 50px;
 
+}
 /* Large */
 .home {
   display: flex;
@@ -16,24 +19,3 @@
   width: 100vw;
 }
 
-/* Medium screens */
-@media all and (max-width: 1366px) {
-  .home {
-    /* When on medium sized screens, we center it by evenly distributing empty space around items */
-    margin: 0;
-    justify-content: space-around;
-    flex-flow: row wrap;
-    background-color: #F8F8F8;
-  }
-}
-
-/* Small screens */
-@media all and (max-width: 400px) {
-  .home {
-    /* On small screens, we are no longer using row direction but column */
-    margin: 0;
-    flex-direction: column;
-    flex-flow: row wrap;
-    background-color: #F8F8F8;
-  }
-}

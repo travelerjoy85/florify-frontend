@@ -3,6 +3,7 @@ import './EditPlant.css';
 import api from '../../api';
 import DeletePlant from './DeletePlant';
 import DeletePlantCard from '../elements/DeletePlantCard';
+import FontAwesome from 'react-fontawesome';
 
 const ENTER = 13
 
@@ -91,6 +92,7 @@ export default class EditPlant extends Component {
 
           <div classNameName="create__card-button">
 
+
           <input type="test" placeholder="Maxtemp" value={this.state.maxtemp}
             onChange={({target})=>this.setState({maxtemp:target.value})}/>
         <br/>
@@ -116,15 +118,16 @@ export default class EditPlant extends Component {
             onChange={({target})=>this.setState({minlux:target.value})}/>
         <br/>
           <div className="create__card-button">
+
             <span>
-              <button onClick={this._submitCard}><a href="/">Submit Plant</a></button>
-              <button onClick={this._toggleDeleteModal}>delete</button>
+              <button onClick={this._submitCard}><a href="/"><FontAwesome className='submitCard-icon' name='check' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></a></button>
+              <button onClick={this._toggleDeleteModal}><FontAwesome className='delete-icon' name='trash' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></button>
               {this.state.showDeleteModal &&
 
                 <div>
                   <h3>Are you sure?</h3>
-                  <button className="confirm-delete-button" onClick={this._handleDelete}>Yes</button>
-                  <button className="cancel-delete-button"><a href="/">No</a></button>
+                  <button className="confirm-delete-button" onClick={this._handleDelete}><FontAwesome className='Yes-icon' name='check' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></button>
+                  <button className="cancel-delete-button"><a href="/"><FontAwesome className='cancel-icon' name='times' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></a></button>
                 </div>
 
                 // <div className="backdrop">
@@ -132,9 +135,10 @@ export default class EditPlant extends Component {
                 // </div>
               }
             </span>
-            <button><a href="/">Cancel</a></button>
+            <button><a href="/"><FontAwesome className='cancel-icon' name='times' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></a></button>
           </div>
         </div>
+
       </div>
     );
   }

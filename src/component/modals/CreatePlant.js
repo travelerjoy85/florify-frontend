@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './CreatePlant.css';
 import api from '../../api';
 import './DeletePlant.css';
+import FontAwesome from 'react-fontawesome';
 
 const ENTER = 13
 
@@ -67,10 +68,8 @@ export default class CreatePlant extends Component {
         <input type="test" placeholder="Description" ref="description" onKeyUp={this._handleTyping}/><br/>
 
         <div className="create__card-button">
-          <span>
-            <button onClick={this._submitCard}>Submit Plant</button>
-            <button><a href="/">Cancel</a></button>
-          </span>
+            <button onClick={this._submitCard}><FontAwesome className='submitCard-icon' name='check' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></button>
+            <button><a href="/"><FontAwesome className='cancel-icon' name='times' size='3x' style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/></a></button>
         </div>
       </div>
     )
