@@ -37,8 +37,8 @@ const yAxisIdHashTable = {
 const scaleHashTable = {
   [HUMIDITY]: '1',
   [TEMPERATURE]: '1',
-  [LUX]: '100',
-  [FERTILITY]: '100'
+  [LUX]: '1000',
+  [FERTILITY]: '5'
 }
 
 
@@ -90,7 +90,7 @@ export const dataSetFactory = (type, dataArray) => {
 }
 
 
-export function optionsFactory(typesRequestedArray) {
+export function optionsFactory(typesRequestedArray, datasets) {
 
   const baselineOptions = {
     responsive: true,
@@ -133,14 +133,16 @@ export function optionsFactory(typesRequestedArray) {
   }
 
   let yAxesArray = typesRequestedArray.map((type, i) => {
-    // console.log(type, yAxisIdHashTable[type])
+    let minValue = Math.min(...datasets[i].data.filter(x=>x))
+    console.log(minValue);
     let yAxisPerculiarToType = {
       position: i % 2===0 ? 'left' : 'right',
       id: yAxisIdHashTable[type],
       ticks:{
         fontColor: colorHashTable[type],
         stepSize: scaleHashTable[type],
-        suggestedMin: 10,
+        suggestedMin: minValue - minValue/10,
+        maxTicksLimit: 1,
         callback: (value) => parseFloat(value.toFixed(2))+unitHashTable[type]
       }
     }
