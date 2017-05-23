@@ -60,16 +60,16 @@ class Api {
   }
 
   // Get the loggedin user profile
-  // getMe = (token) => {
-  //    return superagent
-  //    .get(`${API_HOST}/auth/me`)
-  //    .send({token})
-  //    .set('Authorization', `token ${token}`)
-  //    .set('Accept', 'application/json')
-  //    .then(profile => {
-  //      return JSON.parse(profile.text);
-  //    })
-  //  }
+  getMe = (token) => {
+     return superagent
+     .get(`${API_HOST}/auth/me`)
+     .send({token})
+     .set('Authorization', `token ${token}`)
+     .set('Accept', 'application/json')
+     .then(profile => {
+       return JSON.parse(profile.text);
+     })
+   }
 
    updatePlant = (plantData) => (
       superagent

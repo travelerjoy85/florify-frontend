@@ -166,7 +166,7 @@ export default class DetailedPlantPage extends Component {
                 <p>{ currentFertility } f* </p>
             </div>
           </div>
-          <div className='DetailedPlantPage-chart'>
+          <div className='DetailedPlantPage-chart col-large-7 col-medium-6 col-small-12'>
             { !this.state.loading &&
               <Chart data={ chartStuff.data } options={ chartStuff.options }/>
             }

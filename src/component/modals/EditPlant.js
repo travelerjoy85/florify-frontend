@@ -90,7 +90,7 @@ export default class EditPlant extends Component {
             onChange={({target})=>this.setState({description:target.value})}/>
         <br/>
 
-          <div classNameName="create__card-button">
+          <div className="create__card-button">
 
 
           <input type="test" placeholder="Maxtemp" value={this.state.maxtemp}

@@ -2,6 +2,7 @@ import api from './api';
 
 module.exports = {
   login(email, pass){
+    console.log(email, pass, "check if login works");
     if(localStorage.token){
       throw new Error('Already logged in')
     }
